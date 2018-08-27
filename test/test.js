@@ -14,9 +14,37 @@ describe("test for status code", function(){
         return closeServer();
     })
 
-    it('should show 200 status code when getting', function(){
-        return chai.request(app).get('/').then(res => {
-            console.log(res)
+    it('should show 200 status for home', function(){
+        return chai.request(app).get('/home').then(res => {
+            // console.log(res)
+            expect(res).to.have.status(200);
+        })
+    })
+
+    it('should show 200 status for payment', function(){
+        return chai.request(app).get('/payment').then(res => {
+            // console.log(res)
+            expect(res).to.have.status(200);
+        })
+    })
+
+    it('should show 200 status for login', function(){
+        return chai.request(app).get('/login').then(res => {
+            // console.log(res)
+            expect(res).to.have.status(200);
+        })
+    })
+
+    it('should show 200 status for signup', function(){
+        return chai.request(app).get('/signup').then(res => {
+            // console.log(res)
+            expect(res).to.have.status(200);
+        })
+    })
+
+    it('should show 200 status for seller', function(){
+        return chai.request(app).get('/seller').then(res => {
+            // console.log(res)
             expect(res).to.have.status(200);
         })
     })
