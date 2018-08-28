@@ -15,9 +15,10 @@ describe("test for status code", function(){
     })
 
     it('should show 200 status for home', function(){
-        return chai.request(app).get('/home').then(res => {
+        return chai.request(app).get('/api/home').then(res => {
             // console.log(res)
             expect(res).to.have.status(200);
+            // expect(res).to.be.json;
         })
     })
 
