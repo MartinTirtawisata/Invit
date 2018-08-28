@@ -41,10 +41,10 @@ app.get('/seller', function(req, res){
     res.sendFile(__dirname + '/views/seller.html')
 })
 //this is the url for the API
-// app.use('/api/home', homeRouter);
-// app.use('/payment', paymentRouter);
-// app.use('/login', loginRouter);
-// app.use('/signup', signupRouter);
+app.use('/api/home', homeRouter);
+app.use('/payment', paymentRouter);
+app.use('/login', loginRouter);
+app.use('/signup', signupRouter);
 app.use('/api', sellerRouter);
 
 
