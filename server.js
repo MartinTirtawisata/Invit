@@ -7,11 +7,11 @@ const app = express();
 
 const {DATABASE_URL, PORT} = require('./config')
 
-// const homeRouter = require('./routes/homeRouter')
-// const paymentRouter = require('./routes/paymentRouter')
-// const loginRouter = require('./routes/loginRouter')
-// const signupRouter = require('./routes/signupRouter')
-const apiRouter = require('./routes/apiRouter')
+const homeRouter = require('./routes/homeRouter')
+const paymentRouter = require('./routes/paymentRouter')
+const loginRouter = require('./routes/loginRouter')
+const signupRouter = require('./routes/signupRouter')
+const sellerRouter = require('./routes/sellerRouter')
 
 
 app.use(morgan('common'));
@@ -45,7 +45,7 @@ app.get('/seller', function(req, res){
 // app.use('/payment', paymentRouter);
 // app.use('/login', loginRouter);
 // app.use('/signup', signupRouter);
-app.use('/api', apiRouter);
+app.use('/api', sellerRouter);
 
 
 let server;
