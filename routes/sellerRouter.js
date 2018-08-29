@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+// const faker = require('faker')
 
 const {Product, Seller } = require('../models')
 
@@ -11,6 +12,9 @@ const {Product, Seller } = require('../models')
 router.get('/seller',jsonParser, (req, res) => {
     Seller.find().then(sellers => {
         res.json(sellers);
+        
+        // console.log(faker.lorem.word())
+
     }).catch(onRejected => {
         console.error(onRejected);
         res.status(400).json({message: "something bad happened"})
