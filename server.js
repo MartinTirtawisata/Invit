@@ -11,7 +11,8 @@ const homeRouter = require('./routes/homeRouter')
 const paymentRouter = require('./routes/paymentRouter')
 const loginRouter = require('./routes/loginRouter')
 const signupRouter = require('./routes/signupRouter')
-const sellerRouter = require('./routes/sellerRouter')
+const sellerRouter = require('./routes/sellerRouter');
+const productRouter = require('./routes/productRouter')
 
 
 app.use(morgan('common'));
@@ -46,6 +47,7 @@ app.use('/payment', paymentRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/api', sellerRouter);
+app.use('/api', productRouter);
 
 
 let server;
@@ -71,7 +73,7 @@ function runServer(database_url, port = PORT){
 
 function closeServer(){
     return mongoose.disconnect().then(function(){
-        return new Promise((resolve, reject), function(){
+        return new Promise((resolve, reject) => {
             console.log('closing server');
             server.close(function(err){
                 // console.log(err)

@@ -45,25 +45,25 @@ function tearDownDB(){
 describe("Testing Seller API resource", function(){
     before(function(){
         return runServer(TEST_DATABASE_URL);
-    })
+    });
 
     beforeEach(function(){
         return seedSellerData()
-    })
+    });
 
     afterEach(function(){
         return tearDownDB();
-    })
+    });
 
     after(function(){
         return closeServer();
-    })
+    });
 
     describe('GET endpoints for seller', function(){
         it('should retrieve seller information', function(){
             //Test for both the response and the mongoose
             let res;
-            return chai.request(app).get('/api/seller').then(_res => {
+            return chai.request(app).get('/api/sellers').then(_res => {
                 res = _res
                 expect(res).to.have.status(200);
                 expect(res).to.be.json;
@@ -71,9 +71,9 @@ describe("Testing Seller API resource", function(){
     
                 //Return - counting the sellers stored in Mongo.
                 return Seller.count();
-            }).then(sellerCount => {
+            }).then(function(sellerCount) {
                 expect(res.body).to.have.lengthOf(sellerCount)
-            })
+            });
         });
     });
 
@@ -81,7 +81,7 @@ describe("Testing Seller API resource", function(){
         //Create a variable so it can be used for comparing with the res. 
         it('should create a new seller', function(){
             const newSellerData = generateSellerData();
-            return chai.request(app).post('/api/seller').send(newSellerData).then(res => {
+            return chai.request(app).post('/api/sellers').send(newSellerData).then(res => {
                 // console.log(res.body)
                 expect(res).to.have.status(201);
                 expect(res).to.be.json;
@@ -104,34 +104,40 @@ describe("Testing Seller API resource", function(){
     
     describe('PUT endpoints for seller', function(){
         it('should update an existing seller data', function(){
-            
-        })
-    })
-    // it('should show 200 status for payment', function(){
-    //     return chai.request(app).get('/payment').then(res => {
-    //         // console.log(res)
-    //         expect(res).to.have.status(200);
-    //     })
-    // })
+            let updateSellerData = {
+                userName: 'Martintintut',
+                password: 'password'
+            }
 
-    // it('should show 200 status for login', function(){
-    //     return chai.request(app).get('/login').then(res => {
-    //         // console.log(res)
-    //         expect(res).to.have.status(200);
-    //     })
-    // })
+            Seller.findOne().then(seller => {
+                updateSellerData.id = seller._id
 
-    // it('should show 200 status for signup', function(){
-    //     return chai.request(app).get('/signup').then(res => {
-    //         // console.log(res)
-    //         expect(res).to.have.status(200);
-    //     })
-    // })
+                return chai.request(app).put('/api/sellers').send(updateSellerData).then(res => {
+                    expect(res).to.have.status(204);
+                    expect(res).to.be.json;
+                    return Seller.findById(updateSellerData.id)
+                }).then(seller => {
+                    expect(seller._id).to.equal(updateSellerData.id);
+                    expect(seller.userName).to.equal(updateSellerData.userName);
+                    expect(seller.password).to.equal(updateSellerData.password);
+                });
+            });
+        });
+    });
 
-    // it('should show 200 status for seller', function(){
-    //     return chai.request(app).get('/seller').then(res => {
-    //         // console.log(res)
-    //         expect(res).to.have.status(200);
-    //     })
-    // })
-})
+    describe('DELETE endpoints for seller', function(){
+        it('should delete an existing seller data', function(){
+            //Delete through ID. Query the ID first then pass it to the endpoint
+            Seller.findOne().then(seller => {
+                return chai.request(app).delete(`/api/sellers/${seller._id}`).then(res => {
+                    expect(res).to.have.status(204);
+                    return Seller.findById(seller._id)
+                }).then(seller => {
+                    expect(seller).to.be.null;
+                });
+            });
+        });
+    });
+});
+
+
