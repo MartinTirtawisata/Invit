@@ -1,0 +1,71 @@
+.border {
+    border: black 2px solid;
+}
+
+body {
+    background-color: rgba(238, 238, 238, 0.884);
+}
+
+nav {
+    width: 100%;
+    background-color: rgb(68, 151, 47);
+    padding: 5px;
+}
+
+ul {
+    list-style: none;
+
+}
+
+nav li{
+    display: inline-block;
+    margin-left: 10px;
+    color: white;
+}
+
+.main-content {
+    min-height: 50%;
+}
+
+.profile{
+
+}
+
+.product-list{
+
+}
+
+.profile-picture {
+    width: 50%;
+    margin-left: 25%;
+   
+}
+
+.card{
+    padding: 2px 30px;
+    max-height: 200px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    text-align: center;
+    border: 1px black solid;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+
+.product-table{
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.add-btn {
+    padding: 20px;
+}

@@ -12,7 +12,7 @@ const paymentRouter = require('./routes/paymentRouter')
 const loginRouter = require('./routes/loginRouter')
 const signupRouter = require('./routes/signupRouter')
 const sellerRouter = require('./routes/sellerRouter');
-const productRouter = require('./routes/productRouter')
+
 
 
 app.use(morgan('common'));
@@ -47,7 +47,7 @@ app.use('/payment', paymentRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/api', sellerRouter);
-app.use('/api', productRouter);
+
 
 
 let server;
