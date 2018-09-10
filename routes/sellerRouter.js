@@ -137,7 +137,7 @@ router.post('/products', jsonParser, (req, res) => {
     })
 
     //We have to check whether the seller exists to connect it with the product
-    Seller.findById(req.body.seller_id).then(seller => {
+    Seller.findById(req.body.seller).then(seller => {
         if (seller){
             Product.create({
                 seller: req.body.seller,

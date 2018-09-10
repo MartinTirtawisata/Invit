@@ -35,8 +35,39 @@
             <div class="col-6 border">
             </div>
             <div class="col-12 product-table">
-                <a class="add-btn" href=""><i class="fas fa-plus">Add Product</i></a>
-                <table class="js-product-data">
+                
+                <!-- Trigger Modal -->
+                <button id="addModalBtn" class="add-btn"><i class="fas fa-plus">Add Product</i></button>
+                <!-- The Modal -->
+                <div id="addProductModal" class="modal">
+                    <!-- Modal Content -->
+                    <div class="modal-content">
+                        <span class="closeBtn">&times;</span>
+                        <form class="add-product-form" id="addProductForm">
+                            <fieldset>
+                                <legend>Adding New Product</legend>
+                                <Label>
+                                    <span>Product Name</span>
+                                    <input id="productName" type="text" name="productName" required>
+                                </Label>    
+                                <Label>
+                                    <span>Product Description</span>
+                                    <input id="productDesc" type="text" name="productDesc" required>
+                                </Label>
+                                <Label>
+                                    <span>Price</span>
+                                    <input id="productPrice" type="text" name="productPrice" required>
+                                </Label>
+                                <label><span>Product Image</span>
+                                    
+                                </label>
+                                <button class="submit-btn" type="submit">Submit</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <table class="js-product-table">
                     <tr>
                         <th>ID</th>
                         <th>Product Image</th>
@@ -48,9 +79,8 @@
             </div>
         </div>
     </main>
-    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/seller.js"></script>
 </body>
-</html>
+</html> 
