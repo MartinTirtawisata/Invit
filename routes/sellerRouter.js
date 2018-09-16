@@ -8,7 +8,7 @@ const jsonParser = bodyParser.json();
 
 const {Product, Seller} = require('../models')
 
-//We get all of the products the seller put on the listing
+//GET all sellers
 router.get('/sellers',jsonParser, (req, res) => {
     Seller.find().then(sellers => {
         res.json(sellers);
@@ -21,6 +21,7 @@ router.get('/sellers',jsonParser, (req, res) => {
     });
 });
 
+//GET seller by id
 router.get('/sellers/:id',jsonParser, (req, res) => {
     Seller.findOne({_id: req.params.id}).then(seller => {
         res.json(seller);
@@ -30,6 +31,7 @@ router.get('/sellers/:id',jsonParser, (req, res) => {
     });
 });
 
+//POST seller
 router.post('/sellers',jsonParser, (req, res) => {
     //Checking for the required fields in the keys
     const requiredFields = ['userName','password','email','firstName','lastName']
@@ -64,6 +66,7 @@ router.post('/sellers',jsonParser, (req, res) => {
     })
 });
 
+// PUT seller
 router.put('/sellers/:id', jsonParser, (req, res) => {
     //This cross checks that the parameter ID is equal to the req.body ID so that we are updating the correct one
     if (req.params.id !== req.body._id){
@@ -96,6 +99,7 @@ router.put('/sellers/:id', jsonParser, (req, res) => {
     });   
 });
 
+// DELETE seller
 router.delete('/sellers/:id', jsonParser, (req, res)=> {
     Seller.findByIdAndRemove(req.params.id).then(seller => {
         res.status(204).end();
@@ -107,6 +111,7 @@ router.delete('/sellers/:id', jsonParser, (req, res)=> {
 
 //API endpoint for products
 
+// GET all products
 router.get('/products', jsonParser, (req, res) => {
     Product.find().then(products => {
         res.status(200).json(products)
@@ -116,7 +121,8 @@ router.get('/products', jsonParser, (req, res) => {
     })
 })
 
-router.get('/product/:id',jsonParser, (req, res) => {
+// GET product by id
+router.get('/products/:id',jsonParser, (req, res) => {
     Product.findOne({_id: req.params.id}).then(product => {
         res.json(product);
     }).catch(onRejected => {
@@ -125,6 +131,7 @@ router.get('/product/:id',jsonParser, (req, res) => {
     });
 });
 
+// POST products
 router.post('/products', jsonParser, (req, res) => {
     //Checking for required fields[keys]
     const requiredFields = ['seller', 'product_name','product_img','product_desc','price']
@@ -142,14 +149,15 @@ router.post('/products', jsonParser, (req, res) => {
             Product.create({
                 seller: req.body.seller,
                 product_name: req.body.product_name,
-                product_img: req.body.product_img,
+                // product_img: req.body.product_img,
                 product_desc: req.body.product_desc,
                 price: req.body.price
             }).then(product => {
-            res.status(201).json(product);
+                product.product_img.push({img: req.body.product_img})
+                res.status(201).json(product);
             }).catch(onRejected => {
-            // console.error(onRejected);;
-            res.status(400).json({error: "Something terrible happened"});
+                // console.error(onRejected);;
+                res.status(400).json({error: "Something terrible happened"});
             })
         } else {
             let message = `the seller with the id ${req.body.seller} doesn't exist`
@@ -161,6 +169,7 @@ router.post('/products', jsonParser, (req, res) => {
     })
 })
 
+// PUT products
 router.put('/products/:id', jsonParser, (req, res) => {
   
     //If one of the updateable fields are in the req.body. Set it in productUpdate
@@ -178,6 +187,7 @@ router.put('/products/:id', jsonParser, (req, res) => {
     })
 })
 
+// DELETE products
 router.delete('/products/:id', jsonParser, (req, res)=> {
     Product.findByIdAndRemove(req.params.id).then(product => {
         res.status(204).end();

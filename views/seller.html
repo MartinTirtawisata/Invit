@@ -9,12 +9,22 @@
     <title>Seller</title>
 </head>
 <body>
-    <nav>
+    <nav class="sidenav">
+        <div class="card">        
+            <img class="profile-picture" src="/img/profile_picture_empty.jpeg" alt="">
+        </div>
+        <div class="profile-name">
+            <h4 class="js-seller-name"></h4>
+            <p class="js-seller-username"></p>
+        </div>
+        <div>
+            <p class="sub-nav">Navigation</p>
+        </div>
         <ul>
             <a href=""><li>Browse</li></a>
             <a href=""><li>Log In</li></a>
             <a href=""><li>Sign Up</li></a>
-            <a href=""><li>Seller Dashboard</li></a>
+            <a href=""><li>Dashboard</li></a>
         </ul>
     </nav>
     <main role="main">
@@ -23,29 +33,50 @@
             <!-- Divides page to 2 -->
             <div class="col-6 profile">
                 <!-- Profle Information -->
-                <div class="card col-6">        
-                    <img class="profile-picture" src="/img/profile_picture_empty.jpeg" alt="">
-                </div>
-                <div class="col-6">
-                    <h4 class="js-seller-name"></h4>
-                    <p class="js-seller-username"></p>
-                </div>
+                
                 <!-- Ends Profile Information -->
             </div>
-            <div class="col-6 border">
+            <div class="col-6">
             </div>
             <div class="col-12 product-table">
                 
-                <!-- Trigger Modal -->
-                <button id="addModalBtn" class="add-btn"><i class="fas fa-plus">Add Product</i></button>
-                <!-- The Modal -->
-                <div id="addProductModal" class="modal">
-                    <!-- Modal Content -->
+                <!-- Trigger Add Modal -->
+                <button id="addModalBtn" class="addModalBtn"><i class="fas fa-plus">Add Product</i></button>
+                <!-- The Add Modal -->
+                <div id="addProductModal" class="addProductModal">
+                    <!-- Add Modal Content -->
                     <div class="modal-content">
                         <span class="closeBtn">&times;</span>
                         <form class="add-product-form" id="addProductForm">
                             <fieldset>
                                 <legend>Adding New Product</legend>
+                                <label for="productName">Product Name</label>
+                                <input id="productName" type="text" name="productName" required>
+                                
+                                <label for="productDesc"><span>Product Description</span></label>    
+                                <input id="productDesc" type="text" name="productDesc" required>
+                                
+                                <label for="productPrice"><span>Price</span></label>    
+                                <input id="productPrice" type="text" name="productPrice" required>
+                                
+                                <label for="productImg"><span>Product Image</span>
+                                <input id="productImg" type="file" accept="image/png, image/jpeg">
+
+                                </label>
+                                <button class="submit-btn" type="submit">Submit</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- The Update Modal -->
+                <div id="updateProductModal" class="updateProductModal">
+                    <!-- Update Modal Content -->
+                    <div class="modal-content">
+                        <span class="closeBtn">&times;</span>
+                        <form class="js-update-product-form" id="updateProductForm">
+                            <fieldset>
+                                <legend class="update-legend"></legend>
                                 <Label>
                                     <span>Product Name</span>
                                     <input id="productName" type="text" name="productName" required>
@@ -68,13 +99,17 @@
                 </div>
 
                 <table class="js-product-table">
-                    <tr>
-                        <th>ID</th>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Product Description</th>
-                        <th>Price</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            <th>Product Description</th>
+                            <th>Price</th>
+                            <th>Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="js-product-table-body"></tbody>
                 </table>
             </div>
         </div>

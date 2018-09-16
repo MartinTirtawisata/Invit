@@ -42,7 +42,7 @@ app.get('/seller', function(req, res){
     res.sendFile(__dirname + '/views/seller.html')
 })
 
-app.get('/product-edit', function(req, res){
+app.get('/product-edit/:id', function(req, res){
     res.sendFile(__dirname + '/views/product-edit.html')
 })
 //this is the url for the API
