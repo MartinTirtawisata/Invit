@@ -9,13 +9,13 @@
     <title>Seller</title>
 </head>
 <body>
-    <nav class="sidenav">
+    <nav class="sidenav col-3">
         <div class="card">        
             <img class="profile-picture" src="/img/profile_picture_empty.jpeg" alt="">
         </div>
-        <div class="profile-name">
-            <h4 class="js-seller-name"></h4>
-            <p class="js-seller-username"></p>
+        <div>
+            <h4 class="js-seller-name profile-name"></h4>
+            <p class="js-seller-username profile-username"></p>
         </div>
         <div>
             <p class="sub-nav">Navigation</p>
@@ -27,21 +27,21 @@
             <a href=""><li>Dashboard</li></a>
         </ul>
     </nav>
-    <main role="main">
+    <main class="col-9" role="main">
+        <div class="title">
+            <h1>Company Name</h1>
+        </div>
         <!-- Row -->
         <div class="row main-content">
-            <!-- Divides page to 2 -->
-            <div class="col-6 profile">
-                <!-- Profle Information -->
-                
-                <!-- Ends Profile Information -->
+            <!-- Search Bar-->
+            <div class="search-bar">
+                <label class="search-label" for="search">Search By Name</label><br>
+                <input id="search" type="text"><button class="search-btn">Search</button>
             </div>
-            <div class="col-6">
-            </div>
-            <div class="col-12 product-table">
-                
+            
+            <div class="col-12 product-table">                
                 <!-- Trigger Add Modal -->
-                <button id="addModalBtn" class="addModalBtn"><i class="fas fa-plus">Add Product</i></button>
+                <button id="addModalBtn" class="addModalBtn"><i class="fas fa-plus">Add New Product</i></button>
                 <!-- The Add Modal -->
                 <div id="addProductModal" class="addProductModal">
                     <!-- Add Modal Content -->

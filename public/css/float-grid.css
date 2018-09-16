@@ -32,7 +32,7 @@
 .row::after {
     clear: both;
 }
-.col-3, .col-4, .col-6, .col-12 {
+.col-3, .col-4, .col-6, .col-9, .col-12 {
     float: left;
     /* Gutters:
     * Each column is padded by half-a-gutter on each side,
@@ -44,7 +44,7 @@
     padding-right: 1.04166666%;
 }
     /* Mobile defaults */
-.col-3, .col-4, .col-6, .col-12 {
+.col-3, .col-4, .col-6, .col-9, .col-12 {
     width: 100%;
 }
     
@@ -62,9 +62,17 @@
     .col-6 {
         width: 50%;
     }
+    /* 9 columns */
+    .col-9{
+        width: 75%
+    }
         /* 12 columns, 12/12 in % */
     .col-12 {
         width: 100%;
+    }
+
+    .sidenav{
+        max-width: 250px;
     }
 }
     
