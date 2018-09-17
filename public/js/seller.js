@@ -16,7 +16,7 @@ function getAndDisplayProductList(){
             <td>${d.product_desc}</td>
             <td>${d.price}</td>
             <td>
-                <button id="updateModalBtn" class="js-edit-btn"><i class="far fa-edit"></i></button>
+                <button id="update-modal-btn" class="js-edit-btn"><i class="far fa-edit"></i></button>
                 <button class="js-dlt-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>    
             </td>
             </tr>`;
@@ -42,14 +42,14 @@ $(getAndDisplayProductList());
 $(getAndDisplaySeller());
 
 // -----
-// Adds product through the modal and the API
+// Add Product Modal & API
 
-$('#addModalBtn').on('click', function(){
-    $('#addProductModal').css('display','block');
+$('#add-modal-btn').on('click', function(){
+    $('#add-product-modal').css('display','block');
 })
 
-$('.closeBtn').on('click', function(){
-    $('#addProductModal').css('display','none');
+$('.close-btn').on('click', function(){
+    $('#add-product-modal').css('display','none');
 })
 
 function addProducts(product){
@@ -84,14 +84,14 @@ function handleAddProduct(){
 $(handleAddProduct());
 
 // -----
-// Update/Edit product from the product list
+// Update Product Modal
 
-$('.js-product-table').on('click','#updateModalBtn', function(){
-    $('#updateProductModal').css('display','block');
+$('.js-product-table').on('click','#update-modal-btn', function(){
+    $('#update-product-modal').css('display','block');
 })
 
-$('.closeBtn').on('click', function(){
-    $('#updateProductModal').css('display','none');
+$('.close-btn').on('click', function(){
+    $('#update-product-modal').css('display','none');
 })
 
 function getProductId(){
