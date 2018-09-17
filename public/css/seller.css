@@ -3,17 +3,21 @@
 }
 
 body {
-    background-color: rgba(238, 238, 238, 0.884);
+    background-color: white;
+    font-family: 'Rubik', sans-serif;
 }
 
 /* Nav */
-.sidenav {
+.side-nav {
     height: 100%;
-    width: 250px;
-    position: fixed;
+    /* width: 250px; */
+    /* position: fixed; */
     overflow-x: hidden;
-    background-color: rgba(250, 248, 248, 0.836); 
+    background-color: rgba(15, 13, 13, 0.9); 
     padding: 10px;
+    color:white;
+    /* padding-left: 20px; */
+    float: right;
 }
 
 .card{
@@ -23,120 +27,161 @@ body {
 }
 
 .profile-picture {
-    width: 35%;
+    width: 25%;
+    border-radius: 100%;
 }
 
 .profile-name{
-    width: 100%;
+    margin-bottom: 0px;
+}
+
+.profile-username {
+    margin-top: 5px;
+}
+
+.sub-nav{
+    font-size: 16px;
+    text-decoration-line: underline;
+    margin-bottom: 0px;
 }
 
 ul {
     list-style: none;
+    padding-left: 5px;
+    margin: 5px 0px
 }
 
 nav li{
     display: block;
-    color: black;
-    padding-top: 10px;
-    font-size: 18px;
+    color: white;
+    padding-top: 15px;
+    font-size: 16px;
     text-decoration-line: none;
 }
 
 nav li:hover, nav li:focus {
-    font-size: 20px;
+    font-size: 18px;
 }
 
-.sub-nav{
-    font-size: 20px;
-    text-decoration-line: underline;
-}
+
 /* End Nav */
 
 /* Main */
 .main-content {
     min-height: 50%;
+    max-width: 1500px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0px auto 0px 0px;
 }
 
-.profile{
-
+/* Search Bar */
+.search-label{
+    font-size: 16px;
 }
 
-.product-list{
-
+#search{
+    margin-top: 5px;
+    width: 30%;
+    height: 35px;
 }
 
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td{
-    text-align: center;
-    border: 1px black solid;
-    padding: 8px;
-}
-
-tr:nth-child(even){
-    background-color: #dddddd;
-}
-
-.product-table{
-    margin-top: 25px;
+.search-btn{
+    height: 35px;
+    /* border: 2px solid black; */
+    background-color: rgba(211, 211, 211, 0.3);
+    color: black;
     padding: 10px;
 }
 
-.addModalBtn {
-    padding: 5px;
-    background-color: lightgreen;
+.search-btn:hover {
+    background-color: lightgrey;
+    box-shadow: 2px 2px 2px #ddd
+}
+
+.search-btn:active {
+    background-color: rgba(211, 211, 211, 0.3);
+    box-shadow: none;
+}
+/* End Search Bar */
+
+/* Add/Update Modal */
+.add-modal{
+    margin: 10px auto 0px auto;
+}
+
+.add-modal-btn {
+    padding: 10px;
+    background-color: rgba(211, 211, 211, 0.3);
     color: black;
     border: 0;
+    border-radius: 25%;
+    font-size: 16px;
 }
 
-.addModalBtn:hover, .addModalBtn:focus {
+.add-modal-btn:hover, .add-modal-btn:focus {
     cursor: pointer;
+    box-shadow: 2px 2px 2px;
+    background-color: lightgrey;
 }
 
-.addProductModal, .updateProductModal{
+.add-modal-btn:active{
+    box-shadow: none;
+    background-color: rgba(211, 211, 211, 0.3);
+}
+
+.add-product-modal{
     display: none;
-    position: fixed;
-    left: -80px;
-    top: 90px;
-    
-   
+    position: absolute;
+    left: auto;
+    top: auto;
     overflow: auto;
+}
+
+.update-product-modal{
+    display: none;
+    position: absolute;
+    overflow: auto;
+    margin-top: 50px;
+    margin-left: 15px;
 }
 
 .modal-content{
     background-color: white;
-    margin: 20% auto;
-    padding: 20px;
-    width: 65%;
+    padding: 25px;
+    width: 50%;
     box-shadow: 5px 5px 5px;
+    border-radius: 15px;
+    margin-top:5px;
 }
 
-.closeBtn {
+.close-btn {
     float: right;
     font-size: 24px;
     color: grey;
 }
 
-.closeBtn:hover, .closeBtn:focus{
+.close-btn:hover, .close-btn:focus{
     cursor: pointer;
     color: black;
     text-decoration: none;
 }
 
-fieldset > label > input, .submit-btn {
-    width: 95%;
-    height: 25px;
-    padding: 5px;
-    margin: 5px;
+.close-btn:active {
+    color: grey;
 }
 
-fieldset > input {
+.add-product-form, .update-product-form{
+    font-size: 16px;
+    margin: auto;
+}
+
+.input {
     width: 100%;
+    height: 25px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 5px;
 }
 
 fieldset {
@@ -145,9 +190,46 @@ fieldset {
 
 legend{
     text-align: center;
+    margin: 5px;
 }
 
 .product-img{
     height: 15%;
 }
+
+fieldset > label > input, .submit-btn {
+    width: 100%;
+    height: 25px;
+    padding: 5px;
+    margin: 5px;
+}
+/* End Add/Update Modal */
+
+/* Product Table List */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: rgba(128, 128, 128, 0.05);
+}
+
+tr:hover{
+    background-color: rgba(211, 211, 211, 0.3);
+}
+
+.product-table{
+    margin-top: 25px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+
 
