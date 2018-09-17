@@ -11,13 +11,13 @@ body {
 .side-nav {
     height: 100%;
     /* width: 250px; */
-    /* position: fixed; */
+    position: fixed;
     overflow-x: hidden;
     background-color: rgba(15, 13, 13, 0.9); 
     padding: 10px;
     color:white;
     /* padding-left: 20px; */
-    float: right;
+    float: left;
 }
 
 .card{
@@ -72,7 +72,7 @@ nav li:hover, nav li:focus {
     max-width: 1500px;
     padding-left: 20px;
     padding-right: 20px;
-    margin: 0px auto 0px 0px;
+    margin: 0px auto 0px 250px;
 }
 
 /* Search Bar */
@@ -229,6 +229,11 @@ tr:hover{
     margin-top: 25px;
     padding: 10px;
     overflow-x: auto;
+}
+
+.edit-btn, .delete-btn{
+    border: none;
+    font-size: 16px;
 }
 
 

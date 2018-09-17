@@ -16,8 +16,8 @@ function getAndDisplayProductList(){
             <td>${d.product_desc}</td>
             <td>${d.price}</td>
             <td>
-                <button id="update-modal-btn" class="js-edit-btn"><i class="far fa-edit"></i></button>
-                <button class="js-dlt-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>    
+                <button class="js-edit-btn edit-btn"><i class="far fa-edit"></i></button>
+                <button class="js-dlt-btn delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>    
             </td>
             </tr>`;
         });
@@ -86,7 +86,7 @@ $(handleAddProduct());
 // -----
 // Update Product Modal
 
-$('.js-product-table').on('click','#update-modal-btn', function(){
+$('.js-product-table').on('click','.js-edit-btn', function(){
     $('#update-product-modal').css('display','block');
 })
 
