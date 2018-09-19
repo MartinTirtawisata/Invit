@@ -22,17 +22,18 @@ app.use(express.static('public'));
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/views/home.html')
 });
+
 app.get('/home', function(req, res){
     res.sendFile(__dirname + '/views/home.html')
 });
 
-app.get('/payment', function(req, res){
-    res.sendFile(__dirname + '/views/payment.html')
-})
+// app.get('/payment', function(req, res){
+//     res.sendFile(__dirname + '/views/payment.html')
+// })
 
-app.get('/login', function(req, res){
-    res.sendFile(__dirname + '/views/login.html')
-})
+// app.get('/login', function(req, res){
+//     res.sendFile(__dirname + '/views/login.html')
+// })
 
 app.get('/signup', function(req, res){
     res.sendFile(__dirname + '/views/signup.html')
@@ -41,14 +42,10 @@ app.get('/signup', function(req, res){
 app.get('/seller', function(req, res){
     res.sendFile(__dirname + '/views/seller.html')
 })
-
-app.get('/product-edit/:id', function(req, res){
-    res.sendFile(__dirname + '/views/product-edit.html')
-})
 //this is the url for the API
 app.use('/api/home', homeRouter);
-app.use('/payment', paymentRouter);
-app.use('/login', loginRouter);
+// app.use('/payment', paymentRouter);
+// app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/api', sellerRouter);
 
