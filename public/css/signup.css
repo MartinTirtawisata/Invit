@@ -30,3 +30,37 @@ body {
     display: block;
     text-decoration: none;
 }
+/* End Nav */
+
+/* Form */
+.sign-up-form{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    border: 2px solid grey;
+    border-radius: 30px;
+    background-color: rgba(211, 211, 211, 0.3);
+    box-shadow: 0px 10px 20px 5px rgba(211, 211, 211, 1);
+}
+
+fieldset input {
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+fieldset {
+    border: none;
+    padding: 40px;
+}
+
+legend {
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+}
+
+/* End Form */
