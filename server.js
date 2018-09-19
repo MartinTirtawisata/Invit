@@ -7,18 +7,12 @@ const app = express();
 
 const {DATABASE_URL, PORT} = require('./config')
 
-const homeRouter = require('./routes/homeRouter')
-const paymentRouter = require('./routes/paymentRouter')
-const loginRouter = require('./routes/loginRouter')
-const signupRouter = require('./routes/signupRouter')
-const sellerRouter = require('./routes/sellerRouter');
-
-
+const apiRouter = require('./routes/apiRouter');
 
 app.use(morgan('common'));
 app.use(express.static('public'));
 
-//this is the url for html
+//HTML URL
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/views/home.html')
 });
@@ -42,12 +36,9 @@ app.get('/signup', function(req, res){
 app.get('/seller', function(req, res){
     res.sendFile(__dirname + '/views/seller.html')
 })
-//this is the url for the API
-app.use('/api/home', homeRouter);
-// app.use('/payment', paymentRouter);
-// app.use('/login', loginRouter);
-app.use('/signup', signupRouter);
-app.use('/api', sellerRouter);
+
+// API URL
+app.use('/api', apiRouter);
 
 
 
