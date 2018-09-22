@@ -31,7 +31,7 @@ router.get('/sellers/:id',jsonParser, (req, res) => {
     });
 });
 
-//POST seller
+//POST seller - Sign Up
 router.post('/sellers',jsonParser, (req, res) => {
     //Checking for the required fields in the keys
     const requiredFields = ['userName','password','email','firstName','lastName']

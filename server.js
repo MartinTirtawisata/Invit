@@ -25,9 +25,9 @@ app.get('/home', function(req, res){
 //     res.sendFile(__dirname + '/views/payment.html')
 // })
 
-// app.get('/login', function(req, res){
-//     res.sendFile(__dirname + '/views/login.html')
-// })
+app.get('/login', function(req, res){
+    res.sendFile(__dirname + '/views/login.html')
+})
 
 app.get('/signup', function(req, res){
     res.sendFile(__dirname + '/views/signup.html')

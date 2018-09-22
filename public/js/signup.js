@@ -22,9 +22,9 @@ function addSellerAjax(seller){
         url: SELLER_URL,
         data: JSON.stringify(seller),
         success: function(data){
-            // redirect to seller page with its own page
             console.log('success')
-            // res.sendFile(__dirname + '/views/seller.html')
+            // Edit redirection later. 
+            window.location.assign('http://localhost:8080/seller')
             
         },
         dataType: 'json',
