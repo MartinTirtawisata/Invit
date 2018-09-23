@@ -40,8 +40,6 @@ app.get('/seller', function(req, res){
 // API URL
 app.use('/api', apiRouter);
 
-
-
 let server;
 
 function runServer(database_url, port = PORT){
