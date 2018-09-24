@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+// sellerSchema
 let sellerSchema = mongoose.Schema({
     userName: {
         type: 'string',
@@ -18,10 +19,18 @@ let sellerSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    firstName: 'string',
-    lastName: 'string',
+    firstName: {type: String, default: ''},
+    lastName: {type: String, default: ''},
     
 });
+
+sellerSchema.methods.serialize = function() {
+    return {
+        userName: this.userName || '',
+        firstName: this.firstName || '',
+        lastName: this.lastName || ''
+    };
+;}
 
 sellerSchema.methods.validatePassword = function(password){
     return bcrypt.compare(password, this.password)
@@ -31,6 +40,7 @@ sellerSchema.statics.hashPassword = function(password) {
     return bcrypt.hash(password, 10);
 };
 
+// Product Schema
 let imageSchema = mongoose.Schema({img: 'string'});
 
 let productSchema = mongoose.Schema({

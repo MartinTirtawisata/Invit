@@ -31,41 +31,6 @@ router.get('/sellers/:id',jsonParser, (req, res) => {
     });
 });
 
-//POST seller - Sign Up
-router.post('/sellers',jsonParser, (req, res) => {
-    //Checking for the required fields in the keys
-    const requiredFields = ['userName','password','email','firstName','lastName']
-    requiredFields.forEach(field => {
-        if (!(field in req.body)){
-            let message = `the ${field} field is missing`
-            console.error(message);
-            res.status(500).json({error: message});
-        }
-    });
-    //Check to make sure the username is not taken
-    Seller.findOne({userName: req.body.userName}).then(seller => {
-        if (seller){
-            let message = `the ${seller.userName} username has been taken. Choose another one`
-            res.status(400).json({error: message});
-        } else{
-            Seller.create({
-                userName: req.body.userName,
-                password: req.body.password,
-                email: req.body.email,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName
-            }).then(seller => {
-                res.status(201).json(seller)
-            }).catch(err => {
-                res.status(500).json({message: err});
-            })
-        }
-    }).catch(onRejected => {
-        console.error(onRejected);
-        res.status(500).json({error: "Something wrong happened"})
-    })
-});
-
 // PUT seller
 router.put('/sellers/:id', jsonParser, (req, res) => {
     //This cross checks that the parameter ID is equal to the req.body ID so that we are updating the correct one

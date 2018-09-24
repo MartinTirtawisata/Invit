@@ -1,25 +1,40 @@
 'use strict'
-
+// require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
-const app = express();
+const passport = require('passport');
 
-const {DATABASE_URL, PORT} = require('./config')
-
+const usersRouter = require('./users/usersRouter')
 const apiRouter = require('./routes/apiRouter');
+
+mongoose.Promise = global.Promise;
+const {DATABASE_URL, PORT} = require('./config')
+const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
 
-//HTML URL
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/views/home.html')
+// CORS
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS') {
+        return res.send(204);
+    }
+    next();
 });
+  
 
-app.get('/home', function(req, res){
-    res.sendFile(__dirname + '/views/home.html')
-});
+//HTML URL
+// app.get('/', function(req, res){
+//     res.sendFile(__dirname + '/views/home.html')
+// });
+
+// app.get('/home', function(req, res){
+//     res.sendFile(__dirname + '/views/home.html')
+// });
 
 // app.get('/payment', function(req, res){
 //     res.sendFile(__dirname + '/views/payment.html')
@@ -39,12 +54,14 @@ app.get('/seller', function(req, res){
 
 // API URL
 app.use('/api', apiRouter);
+app.use('/api/users', usersRouter);
+
 
 let server;
 
 function runServer(database_url, port = PORT){
     return new Promise((resolve, reject) => {
-        mongoose.connect(database_url, err => {
+        mongoose.connect(database_url, {useNewUrlParser: true}, err => {
             if (err){
                 // console.error(err);
                 return reject(err);

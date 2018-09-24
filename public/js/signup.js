@@ -1,6 +1,6 @@
 'use strict'
 
-const SELLER_URL = '/api/sellers'
+const SELLER_URL = '/api/users/seller'
 
 function handleSellerSignup(){
     $('.sign-up-form').submit(function(e){
