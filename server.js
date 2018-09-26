@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
 const passport = require('passport');
 
 const usersRouter = require('./users/usersRouter')
+const authRouter = require('./auth/router');
+const localStrategy = require('./auth/strategies')
 const apiRouter = require('./routes/apiRouter');
 
 mongoose.Promise = global.Promise;
@@ -25,6 +27,8 @@ app.use(function (req, res, next) {
     }
     next();
 });
+
+passport.use(localStrategy);
   
 
 //HTML URL
@@ -55,6 +59,7 @@ app.get('/seller', function(req, res){
 // API URL
 app.use('/api', apiRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter)
 
 
 let server;
