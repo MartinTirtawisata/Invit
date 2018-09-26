@@ -2,7 +2,7 @@
 const PRODUCT_URL = '/api/products'
 const SELLER_URL = '/api/sellers'
 
-// Gets the Product API and display the product list
+// GET Product
 function getAndDisplayProductList(){
     console.log('retrieving product data API')
     $.getJSON(PRODUCT_URL, function (product_data){
@@ -27,7 +27,7 @@ function getAndDisplayProductList(){
 
 
 //-----
-//Gets Seller API and display it
+//GET Seller
 function getAndDisplaySeller(){
     $.getJSON(SELLER_URL, function(seller_data) {
         // console.log(seller_data)
@@ -42,7 +42,7 @@ $(getAndDisplayProductList());
 $(getAndDisplaySeller());
 
 // -----
-// Add Product Modal & API
+// POST Product
 
 $('#add-modal-btn').on('click', function(){
     $('#add-product-modal').css('display','block');
@@ -84,7 +84,7 @@ function handleAddProduct(){
 $(handleAddProduct());
 
 // -----
-// Update Product Modal
+// UPDATE Product
 
 $('.js-product-table').on('click','.js-edit-btn', function(){
     $('#update-product-modal').css('display','block');
@@ -135,35 +135,8 @@ function updateProductData(product){
 
 $(getProductId());
 
-// function updateShoppingListitem(item) {
-//     console.log("Updating shopping list item `" + item.id + "`");
-//     $.ajax({
-//       url: SHOPPING_LIST_URL + "/" + item.id,
-//       method: "PUT",
-//       data: JSON.stringify(item),
-//       success: function(data) {
-//         getAndDisplayShoppingList();
-//       },
-//       dataType: "json",
-//       contentType: "application/json"
-//     });
-//   }
-
-//   function handleShoppingCheckedToggle() {
-//     $(".js-shopping-list").on("click", ".js-shopping-item-toggle", function(e) {
-//       e.preventDefault();
-//       var element = $(e.currentTarget).closest(".js-shopping-item");
-//       var item = {
-//         id: element.attr("id"),
-//         checked: !JSON.parse(element.attr("data-checked")),
-//         name: element.find(".js-shopping-item-name").text()
-//       };
-//       updateShoppingListitem(item);
-//     });
-//   }
-
 // -----
-//Deletes the product from the product list
+//DELETE Product
 
 function deleteOneProduct(productID){
     console.log(`Deleting product` + productID)
