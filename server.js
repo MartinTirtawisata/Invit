@@ -32,7 +32,7 @@ passport.use(jwtStrategy);
 
 const jwtAuth = passport.authenticate('jwt', {session: false});
 
-app.get('/api/protected', jwtAuth, (req, res) => {
+app.get('/api/anything', jwtAuth, (req, res) => {
     return res.json({
         data: 'rosebud'
     });

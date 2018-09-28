@@ -110,10 +110,10 @@ router.post('/seller', jsonParser, (req, res) => {
 });
 
 // Only for testing purposes; to see the output
-router.get('/seller', (req, res) => {
-    return Seller.find().then(users => res.json(users.map(user => user.serialize())))
-    .catch(err => res.status(500).json({code: 500, message: 'Internal server error'}))
-});
+// router.get('/seller', (req, res) => {
+//     return Seller.find().then(users => res.json(users.map(user => user.serialize())))
+//     .catch(err => res.status(500).json({code: 500, message: 'Internal server error'}))
+// });
 
 // how does this export?
 module.exports = {router};
