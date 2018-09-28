@@ -115,4 +115,5 @@ router.get('/seller', (req, res) => {
     .catch(err => res.status(500).json({code: 500, message: 'Internal server error'}))
 });
 
-module.exports = router;
+// how does this export?
+module.exports = {router};

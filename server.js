@@ -1,13 +1,12 @@
 'use strict'
-// require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
 const passport = require('passport');
 
-const usersRouter = require('./users/usersRouter')
-const authRouter = require('./auth/router');
-const localStrategy = require('./auth/strategies')
+const {router: usersRouter} = require('./users')
+const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
 const apiRouter = require('./routes/apiRouter');
 
 mongoose.Promise = global.Promise;
@@ -29,7 +28,15 @@ app.use(function (req, res, next) {
 });
 
 passport.use(localStrategy);
-  
+passport.use(jwtStrategy);
+
+const jwtAuth = passport.authenticate('jwt', {session: false});
+
+app.get('/api/protected', jwtAuth, (req, res) => {
+    return res.json({
+        data: 'rosebud'
+    });
+});  
 
 //HTML URL
 // app.get('/', function(req, res){
