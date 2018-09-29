@@ -1,14 +1,16 @@
 'use strict'
+global.TEST_DATABASE_URL = "mongodb://localhost/test-e-commerce-node-app";
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 //mongoose is imported because we have to run the server here and import that test database here
+
+// const TEST_DATABASE_URL = require('../config');
 const mongoose = require('mongoose');
 const faker = require('faker')
 const expect = chai.expect;
 
 const {Product, Seller} = require('../models')
-const {TEST_DATABASE_URL} = require('../config')
 const {app, runServer, closeServer} = require('../server');
 
 chai.use(chaiHttp);
@@ -74,7 +76,7 @@ describe("Testing Seller and Product API resource", function(){
             let seller_id = seller[0]._id
             return seedProductData(seller_id)
         }).catch(err => {
-            console.log(err)
+            // console.error(err)
         })
     });
   
@@ -113,16 +115,14 @@ describe("Testing Seller and Product API resource", function(){
                 expect(res).to.have.status(201);
                 expect(res).to.be.json;
                 expect(res).to.be.a('object');
-                expect(res.body).to.include.keys('_id','userName','password','email','firstName','lastName');
+                expect(res.body).to.include.keys('_id','userName','password','firstName','lastName');
                 expect(res.body.userName).to.equal(newSellerData.userName);
-                expect(res.body.email).to.equal(newSellerData.email);
                 expect(res.body.firstName).to.equal(newSellerData.firstName);
                 expect(res.body.lastName).to.equal(newSellerData.lastName);
                 expect(res.body.id).to.not.be.null;
                 return Seller.findById(res.body._id)
             }).then(seller => {
                 expect(seller.userName).to.equal(newSellerData.userName);
-                expect(seller.email).to.equal(newSellerData.email);
                 expect(seller.firstName).to.equal(newSellerData.firstName);
                 expect(seller.lastName).to.equal(newSellerData.lastName);
             });
@@ -252,10 +252,6 @@ describe("Testing Seller and Product API resource", function(){
             })
         })
     })
-
-
-
-
 });
 
 

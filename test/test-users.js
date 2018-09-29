@@ -1,10 +1,13 @@
 'use strict';
-global.DATABASE_URL = "mongodb://localhost/e-commerce-node-app";
+global.TEST_DATABASE_URL = "mongodb://localhost/test-e-commerce-node-app";
+
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
+const mongoose = require('mongoose');
 const { app, runServer, closeServer } = require('../server');
 const {Seller} = require('../users');
+
 
 const expect = chai.expect;
 
@@ -21,7 +24,7 @@ describe('/api/user', function() {
     const lastNameB = 'UserB';
 
     before(function() {
-        return runServer();
+        return runServer(TEST_DATABASE_URL);
     });
 
     after(function() {
