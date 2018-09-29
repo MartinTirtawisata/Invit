@@ -316,7 +316,105 @@ describe('/api/user', function() {
                 });
             });
 
-            
-        })
-    })
-})
+            it('should create a new user', function() {
+                return chai.request(app).post('/api/users').send({
+                    userName, 
+                    password, 
+                    firstName, 
+                    lastName
+                }).then(res => {
+                    expect(res).to.have.status(201);
+                    expect(res.body).to.be.an('object');
+                    expect(res.body).to.have.keys(
+                        'userName',
+                        'firstName',
+                        'lastName'
+                    );
+                    expect(res.body.userName).to.equal(userName);
+                    expect(res.body.firstName).to.equal(firstName);
+                    expect(res.body.lastName).to.equal(lastName);
+                    return Seller.findOne({
+                        userName
+                    });
+                }).then(user => {
+                    expect(user).to.not.be.null;
+                    expect(user.firstName).to.equal(firstName);
+                    expect(user.lastName).to.equal(lastName);
+                    return user.validatePassword(password);
+                }).then(correctPassword => {
+                    expect(correctPassword).to.be.true;
+                });
+            });
+
+            it('should trim firstName and lastName', function() {
+                return chai.request(app).post('/api/users').send({
+                    userName, 
+                    password, 
+                    firstName: ` ${firstName} `, 
+                    lastName: ` ${lastName} `
+                }).then((res) => {
+                    expect(res).to.have.status(201);
+                    expect(res.body).to.be.an('object');
+                    expect(res.body).to.have.keys(
+                        'userName',
+                        'firstName',
+                        'lastName'
+                    );
+                    expect(res.body.userName).to.equal(userName);
+                    expect(res.body.firstName).to.equal(firstName);
+                    expect(res.body.lastName).to.equal(lastName);
+                    return Seller.findOne({
+                        userName
+                    });
+                }).then(user => {
+                    expect(user).to.not.be.null;
+                    expect(user.firstName).to.equal(firstName);
+                    expect(user.lastName).to.equal(lastName);
+                });
+            });
+        });
+
+        describe('GET', function() {
+            it('should return an empty array initially', function() {
+                return chai.request(app).get('/api/users').then(res => {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.an('array');
+                    expect(res.body).to.have.length(0);
+                });
+            });
+
+            it('should return an array of users', function() {
+                return Seller.create(
+                {
+                    userName, 
+                    password, 
+                    firstName,
+                    lastName
+                },
+                {
+                    userName: userNameB,
+                    password:password,
+                    firstName: firstNameB,
+                    lastName:lastNameB
+                }
+                ).then(() => {
+                    chai.request(app).get('/api/users')
+                }).then(res => {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.an('array');
+                    expect(res.body).to.have.length(2);
+                    expect(res.body[0]).to.deep.equal({
+                        userName,
+                        firstName,
+                        lastName
+                    });
+                    expect(res.body[0]).to.deep.equal({
+                        userNameB,
+                        firstNameB,
+                        lastNameB
+                    });
+                });
+            });
+        });
+    });
+});

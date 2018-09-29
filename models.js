@@ -14,11 +14,6 @@ let sellerSchema = mongoose.Schema({
         type: 'string',
         required: true,
     },
-    email: {
-        type: 'string',
-        required: true,
-        unique: true
-    },
     firstName: {type: String, default: ''},
     lastName: {type: String, default: ''},
     

@@ -78,6 +78,7 @@ router.delete('/sellers/:id', jsonParser, (req, res)=> {
 
 // GET all products
 router.get('/products', jsonParser, (req, res) => {
+    // add product.find({seller:sellerID})
     Product.find().then(products => {
         res.status(200).json(products)
     }).catch(onRejected => {
