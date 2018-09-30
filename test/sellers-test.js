@@ -20,7 +20,6 @@ function generateSellerData(){
     return {
         userName: faker.internet.userName(),
         password: faker.lorem.word(),
-        email: faker.internet.email(),
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName()
     }
@@ -106,28 +105,27 @@ describe("Testing Seller and Product API resource", function(){
         });
     });
 
-    describe('POST endpoints for seller', function(){
-        //Create a variable so it can be used for comparing with the res. 
-        it('should create a new seller', function(){
-            const newSellerData = generateSellerData();
-            return chai.request(app).post('/api/sellers').send(newSellerData).then(res => {
-                // console.log(res.body)
-                expect(res).to.have.status(201);
-                expect(res).to.be.json;
-                expect(res).to.be.a('object');
-                expect(res.body).to.include.keys('_id','userName','password','firstName','lastName');
-                expect(res.body.userName).to.equal(newSellerData.userName);
-                expect(res.body.firstName).to.equal(newSellerData.firstName);
-                expect(res.body.lastName).to.equal(newSellerData.lastName);
-                expect(res.body.id).to.not.be.null;
-                return Seller.findById(res.body._id)
-            }).then(seller => {
-                expect(seller.userName).to.equal(newSellerData.userName);
-                expect(seller.firstName).to.equal(newSellerData.firstName);
-                expect(seller.lastName).to.equal(newSellerData.lastName);
-            });
-        });
-    });
+    // describe('POST endpoints for seller', function(){
+    //     it('should create a new seller', function(){
+    //         const newSellerData = generateSellerData();
+    //         return chai.request(app).post('/api/sellers').send(newSellerData).then(res => {
+    //             console.log(res.body)
+    //             expect(res).to.have.status(201);
+    //             expect(res).to.be.json;
+    //             expect(res).to.be.a('object');
+    //             expect(res.body).to.include.keys('_id','userName','password','firstName','lastName');
+    //             expect(res.body.userName).to.equal(newSellerData.userName);
+    //             expect(res.body.firstName).to.equal(newSellerData.firstName);
+    //             expect(res.body.lastName).to.equal(newSellerData.lastName);
+    //             expect(res.body.id).to.not.be.null;
+    //             return Seller.findById(res.body._id)
+    //         }).then(seller => {
+    //             expect(seller.userName).to.equal(newSellerData.userName);
+    //             expect(seller.firstName).to.equal(newSellerData.firstName);
+    //             expect(seller.lastName).to.equal(newSellerData.lastName);
+    //         });
+    //     });
+    // });
     
     describe('PUT endpoints for seller', function(){
         it('should update an existing seller data', function(){
@@ -168,21 +166,21 @@ describe("Testing Seller and Product API resource", function(){
     });
 
     //Describe tests for products now
-    describe('GET endpoint for products', function(){
-        it('should retrieve all items for products', function(){
-            let res;
-            return chai.request(app).get('/api/products').then(_res => {
-                // console.log(_res)
-                res = _res
-                // console.log(expect(res))
-                expect(res).to.have.status(200);
-                expect(res.body).to.have.lengthOf.at.least(1);
-                return Product.count()
-            }).then(productCount => {
-                expect(res.body).to.have.lengthOf(productCount)
-            })
-        })
-    })
+    // describe('GET endpoint for products', function(){
+    //     it('should retrieve all items for products', function(){
+    //         let res;
+    //         return chai.request(app).get('/api/products').then(_res => {
+    //             // console.log(_res)
+    //             res = _res
+    //             // console.log(expect(res))
+    //             expect(res).to.have.status(200);
+    //             expect(res.body).to.have.lengthOf.at.least(1);
+    //             return Product.count()
+    //         }).then(productCount => {
+    //             expect(res.body).to.have.lengthOf(productCount)
+    //         })
+    //     })
+    // })
 
     describe('POST endpoint for products', function(){
         it('should create a new product', function(){
