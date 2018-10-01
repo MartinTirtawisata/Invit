@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/seller.css">
     <link rel="stylesheet" href="/css/float-grid.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    
     <title>Seller</title>
 </head>
 
@@ -18,111 +18,124 @@
         </ul>
     </nav>
 
-    <nav class="side-navbar col-3">
-        <div class="card">        
-            <img class="profile-picture" src="/img/profile_picture_empty.jpeg" alt="">
-        </div>
-        <div>
-            <h4 class="js-seller-name profile-name"></h4>
+    <nav class="side-navbar">
+        <div class="user-title">
+            <p class="js-seller-name profile-name"></p>
             <p class="js-seller-username profile-username"></p>
         </div>
-        <!-- <div>
-            <p class="sub-nav">Navigation</p>
-        </div> -->
-        <!-- <ul class="side-nav">
-            <li><a href="">Dashboard</a></li>
-        </ul> -->
+        <ul class="side-nav">
+            <li class="side-nav-item"><a href="">Dashboard</a></li>
+            <li class="side-nav-item"><a href="#">Products</a></li>
+        </ul>
     </nav>
    
     <main class="col-12" role="main">
 
         <!-- Main Content -->
         <div class="main-content">
-            <header>
-                <h1>Company Name</h1>
-            </header>
-
-            <!-- Search Bar-->
-            <div class="search-bar">
-                <label class="search-label" for="search">Search By Name</label><br>
-                <input id="search" type="text"><button class="search-btn">Search</button>
+            <div class="row">
+                <header class="col-12">
+                    <p class="shop-title"><span class="js-seller-username"></span>'s Shop</p>
+                </header>
             </div>
             
-            <!-- Add Modal -->
-            <div class="add-modal">
-                 <!-- Trigger Add Modal -->
-                 <button id="add-modal-btn" class="add-modal-btn"><i class="fas fa-plus"></i></button>
-                 <!-- The Add Modal -->
-                 <div id="add-product-modal" class="add-product-modal">
-                     <!-- Add Modal Content -->
-                     <div class="modal-content">
-                         <span class="close-btn">&times;</span>
-                         <form class="add-product-form" id="addProductForm">
-                             <fieldset>
-                                 <legend>Adding New Product</legend>
-                                 <label for="productName">Product Name</label>
-                                 <input class="input" id="productName" type="text" name="productName" required>
-                                 
-                                 <label for="productDesc"><span>Product Description</span></label>    
-                                 <input class="input" id="productDesc" type="text" name="productDesc" required>
-                                 
-                                 <label for="productPrice"><span>Price</span></label>    
-                                 <input class="input" id="productPrice" type="text" name="productPrice" required>
-                                 
-                                 <label for="productImg"><span>Product Image</span>
-                                 <input class="input" id="productImg" type="file" accept="image/png, image/jpeg">
- 
-                                 </label>
-                                 <button class="submit-btn" type="submit">Submit</button>
-                             </fieldset>
-                         </form>
-                     </div>
-                 </div>
-            </div>
-            <!-- The Update Modal -->
-            <div id="update-product-modal" class="update-product-modal">
-                <!-- Update Modal Content -->
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <form class="js-update-product-form update-product-form" id="updateProductForm">
-                        <fieldset>
-                            <legend class="update-legend"></legend>
-                            <Label>
-                                <span>Product Name</span>
-                                <input class="input" id="productName" type="text" name="productName" required>
-                            </Label>    
-                            <Label>
-                                <span>Product Description</span>
-                                <input class="input" id="productDesc" type="text" name="productDesc" required>
-                            </Label>
-                            <Label>
-                                <span>Price</span>
-                                <input class="input" id="productPrice" type="text" name="productPrice" required>
-                            </Label>
-                            <label><span>Product Image</span>
-                                
-                            </label>
-                            <button class="submit-btn" type="submit">Submit</button>
-                        </fieldset>
-                    </form>
+
+            <!-- Search Bar-->
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-bar content-box">
+                        <label class="search-label" for="search">Search By Name</label><br>
+                        <input id="search" type="text" placeholder="Search...">
+                        <button class="search-btn">Search</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-12 product-table">                
-                <table class="js-product-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Product Image</th>
-                            <th>Product Name</th>
-                            <th>Product Description</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="js-product-table-body"></tbody>
-                </table>
+            <div class="row">
+                <div class="col-6">
+                    <p class="content-box">Revenue: <span class="revenue" >$100,000</span></p>
+                </div>
+                <div class="col-6">
+                    <p class="content-box">Products: <span class="product-qty">5</span></p>
+                </div>
             </div>
+           
+            <div class="row">
+                <div class="col-12 product-table">                
+                    <table class="js-product-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product Name</th>
+                                <th>Product Description</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="js-product-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- The Add Modal -->
+            <div class="row">
+                <div class="col-12">
+                    <button id="add-modal-btn" class="add-modal-btn"><span>Add</span></button>
+                </div>  
+                <div class="col-12">
+                    <div id="add-product-modal" class="add-product-modal">
+                        <!-- Add Modal Content -->
+                        <div class="modal-content">
+                            <span class="close-btn">&times;</span>
+                            <form class="add-product-form" id="addProductForm">
+                                <fieldset>
+                                    <legend>Adding New Product</legend>
+                                    <label for="productName">Product Name</label>
+                                    <input class="input" id="productName" type="text" name="productName" required>
+                                    
+                                    <label for="productDesc"><span>Product Description</span></label>    
+                                    <input class="input" id="productDesc" type="text" name="productDesc" required>
+                                    
+                                    <label for="productPrice"><span>Price</span></label>    
+                                    <input class="input" id="productPrice" type="text" name="productPrice" required>
+                                    
+                                    </label>
+                                    <button class="submit-btn" type="submit">Submit</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           <!-- The Update Modal -->
+           <div id="update-product-modal" class="update-product-modal">
+               <!-- Update Modal Content -->
+               <div class="modal-content">
+                   <span class="close-btn">&times;</span>
+                   <form class="js-update-product-form update-product-form" id="updateProductForm">
+                       <fieldset>
+                           <legend class="update-legend"></legend>
+                           <Label>
+                               <span>Product Name</span>
+                               <input class="input" id="productName" type="text" name="productName" required>
+                           </Label>    
+                           <Label>
+                               <span>Product Description</span>
+                               <input class="input" id="productDesc" type="text" name="productDesc" required>
+                           </Label>
+                           <Label>
+                               <span>Price</span>
+                               <input class="input" id="productPrice" type="text" name="productPrice" required>
+                           </Label>
+                           <label><span>Product Image</span>
+                               
+                           </label>
+                           <button class="submit-btn" type="submit">Submit</button>
+                       </fieldset>
+                   </form>
+               </div>
+           </div>
+
         </div>
     </main>
 

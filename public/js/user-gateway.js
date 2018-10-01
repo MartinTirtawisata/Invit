@@ -37,8 +37,7 @@ $(handleSellerRegistration());
 
 // User Authentication for login
 function handleUserAuthentication(){
-    $('js-authentication-form').submit(function(event) {
-        console.log(event.currentTarget)
+    $('.js-authentication-form').submit(function(event) {
         event.preventDefault();
         authenticateUser({
             userName: $(event.currentTarget).find('#username').val(),
@@ -50,7 +49,7 @@ function handleUserAuthentication(){
 function authenticateUser(user){
     console.log('authenticating user');
     $.ajax({
-        method: "POST",
+        method: 'POST',
         url: AUTH_URL,
         data: JSON.stringify(user),
         success: function(data) {

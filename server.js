@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
 const passport = require('passport');
+// const flash = require('connect-flash')
 
 const {router: usersRouter} = require('./users')
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
@@ -15,6 +16,7 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
+// app.use(flash());
 
 // CORS
 app.use(function (req, res, next) {

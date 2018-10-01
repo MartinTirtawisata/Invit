@@ -11,13 +11,12 @@ function getAndDisplayProductList(){
             console.log(d)
             return `<tr class="js-product-data" id=${d._id}>
             <td>${index + 1}</td>
-            <td><img class="product-img" src="/img/iPhone_Xs.jpeg" alt="iPhone-X"></td>
             <td>${d.product_name}</td>
             <td>${d.product_desc}</td>
             <td>${d.price}</td>
             <td>
-                <button class="js-edit-btn edit-btn"><i class="far fa-edit"></i></button>
-                <button class="js-dlt-btn delete-btn"><i class="fa fa-trash" aria-hidden="true"></i></button>    
+                <button class="js-edit-btn edit-btn"><span class="edit-text">Edit</span></button>
+                <button class="js-dlt-btn delete-btn"><span>Delete</span></button>    
             </td>
             </tr>`;
         });
