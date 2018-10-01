@@ -71,7 +71,7 @@ function handleAddProduct(){
         e.preventDefault();
         console.log('handling add product')
         addProducts({
-            seller: '5b857955583d649b45df849d',
+            seller: '5bb23daaeca5741b3a97d49a',
             product_name: $(e.currentTarget).find('#productName').val(),
             product_desc: $(e.currentTarget).find('#productDesc').val(),
             product_img: $(e.currentTarget).find('#productImg').val(),
