@@ -4,7 +4,8 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose')
 const passport = require('passport');
-// const flash = require('connect-flash')
+const path = require('path');
+const exphbs = require('express-handlebars');
 
 const {router: usersRouter} = require('./users')
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
@@ -16,7 +17,6 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
-// app.use(flash());
 
 // CORS
 app.use(function (req, res, next) {
@@ -41,18 +41,6 @@ app.get('/api/anything', jwtAuth, (req, res) => {
 });  
 
 //HTML URL
-// app.get('/', function(req, res){
-//     res.sendFile(__dirname + '/views/home.html')
-// });
-
-// app.get('/home', function(req, res){
-//     res.sendFile(__dirname + '/views/home.html')
-// });
-
-// app.get('/payment', function(req, res){
-//     res.sendFile(__dirname + '/views/payment.html')
-// })
-
 app.get('/login', function(req, res){
     res.sendFile(__dirname + '/views/login.html')
 })
