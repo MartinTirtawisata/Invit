@@ -1,10 +1,9 @@
-.border {
-    border: black 2px solid;
+* {
+    box-sizing: border-box;
 }
-
 body {
-    background-color: white;
-    font-family: 'Rubik', sans-serif;
+    background-color: rgba(34, 47, 62, 0.08);
+    font-family: 'Muli', sans-serif;
 }
 
 /* Nav */
@@ -12,7 +11,7 @@ body {
     position: fixed;
     width: 100%;
     padding: 1px;
-    background-color: rgba(211, 211, 211, 0.3);
+    background-color:rgba(34, 47, 62,0.7);
     height: 50px;
     max-height: 50px;
 
@@ -38,29 +37,28 @@ body {
 .side-navbar {
     height: 100%;
     position: fixed;
-    background-color: rgba(15, 13, 13, 0.9); 
-    padding: 10px;
+    background-color:rgba(33, 165, 177,0.6); 
     color:white;
     max-width: 250px;
-}
-
-.card{
-    width: 100%;
-    margin-top: 40px;
-    max-height: 200px;
-}
-
-.profile-picture {
     width: 25%;
-    border-radius: 100%;
+}
+
+.user-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 25%;
 }
 
 .profile-name{
     margin-bottom: 0px;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .profile-username {
     margin-top: 5px;
+    font-size: 24px;
+    font-style: italic;
 }
 
 .sub-nav{
@@ -69,10 +67,10 @@ body {
     margin-bottom: 0px;
 }
 
-/* .side-nav {
+.side-nav {
     list-style: none;
-    padding-left: 5px;
-    margin: 5px 0px
+    padding-left: 0px;
+    margin: 5px 0px;
 }
 
 .side-nav a{
@@ -83,38 +81,76 @@ body {
     text-decoration-line: none;
 }
 
+.side-nav-item{
+    width: 100%;
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
 
-.side-nav li:hover, .side-nav li:focus {
-    font-size: 18px;
-} */
+.side-nav-item:hover {
+    background-color: rgba(33, 165, 177,1.0)
+}
+
 /* End Nav */
 
 /* Main */
 .main-content {
     min-height: 50%;
     max-width: 1500px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 50px auto 0px 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 7% auto 0px 20%;
+}
+
+.shop-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Content Box */
+.content-box{
+    padding: 10px;
+    background-color: white;
+}
+
+.revenue {
+    color: darkgreen;
+    font-size: 24px;
+}
+
+.product-qty{
+    color: grey;
+    font-size: 24px;
 }
 
 /* Search Bar */
 .search-label{
     font-size: 16px;
+    font-weight: bold;
 }
 
 #search{
     margin-top: 5px;
-    width: 30%;
+    margin-right: 8px;
+    width: 35%;
     height: 35px;
+    font-size: 16px;
+    border: none;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid rgba(34, 47, 62,0.3);
 }
 
 .search-btn{
-    height: 35px;
-    /* border: 2px solid black; */
-    background-color: rgba(211, 211, 211, 0.3);
-    color: black;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    background-color: rgba(34, 47, 62,0.1);
+    border-radius: 5px;
+    color: rgba(34, 47, 62,0.7);
     padding: 10px;
+    
 }
 
 .search-btn:hover {
@@ -129,53 +165,45 @@ body {
 /* End Search Bar */
 
 /* Add/Update Modal */
-.add-modal{
-    margin: 10px auto 0px auto;
-}
-
 .add-modal-btn {
-    padding: 10px;
-    background-color: rgba(211, 211, 211, 0.3);
-    color: black;
+    padding: 12px;
+    background-color: rgb(30, 167, 30, 0.5);
+    color: white;;
     border: 0;
-    border-radius: 25%;
+    border-radius: 10px;
     font-size: 16px;
 }
 
 .add-modal-btn:hover, .add-modal-btn:focus {
     cursor: pointer;
-    box-shadow: 2px 2px 2px;
-    background-color: lightgrey;
+    box-shadow: 3px 3px 3px;
+    color: lightgrey;
+    background-color: rgb(30, 167, 30, 0.8);
 }
 
 .add-modal-btn:active{
-    box-shadow: none;
-    background-color: rgba(211, 211, 211, 0.3);
+    background-color: rgb(30, 167, 30, 0.5);
 }
 
 .add-product-modal{
     display: none;
-    position: absolute;
-    left: auto;
-    top: auto;
     overflow: auto;
 }
 
 .update-product-modal{
     display: none;
-    position: absolute;
     overflow: auto;
-    margin-top: 50px;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .modal-content{
     background-color: white;
     padding: 25px;
-    width: 50%;
-    box-shadow: 5px 5px 5px;
+    width: 60%;
+    box-shadow: 4px 4px 20px 1px;
     border-radius: 15px;
     margin-top:5px;
+    margin-left: 5px;
 }
 
 .close-btn {
@@ -214,38 +242,44 @@ fieldset {
 legend{
     text-align: center;
     margin: 5px;
+    font-size: 20px
 }
 
-.product-img{
-    height: 15%;
-}
-
-fieldset > label > input, .submit-btn {
+.submit-btn {
     width: 100%;
-    height: 25px;
+    font-size: 18px;
+    height: 35px;
     padding: 5px;
-    margin: 5px;
+    border: 0;
+    background-color:rgba(33, 165, 177,0.6); 
+    border-radius: 5px;
 }
 /* End Add/Update Modal */
 
 /* Product Table List */
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
+th{
+    background-color:rgba(33, 165, 177,0.8); 
+    color: white;
+}
+
 th, td{
     text-align: center;
     border-bottom: 1px solid #ddd;
-    padding: 8px;
+    padding: 15px;
 }
 
 tr:nth-child(even){
-    background-color: rgba(128, 128, 128, 0.05);
+    background-color:rgba(33, 165, 177,0.1); 
 }
 
 tr:hover{
-    background-color: rgba(211, 211, 211, 0.3);
+    background-color:rgba(33, 165, 177,0.2); 
 }
 
 .product-table{
@@ -257,6 +291,37 @@ tr:hover{
 .edit-btn, .delete-btn{
     border: none;
     font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.edit-btn {
+    background-color:rgba(33, 165, 177,0.4); 
+}
+
+.delete-btn{
+    background-color: rgba(228, 20, 20, 0.4)
+}
+
+.edit-btn:hover {
+    background-color:rgba(33, 165, 177,0.6);
+    box-shadow: 1px 1px 2px 1px; 
+    cursor: pointer;
+}
+
+.edit-btn:active {
+    background-color:rgba(33, 165, 177,0.4); 
+}
+
+.delete-btn:hover {
+    background-color: rgba(228, 20, 20, 0.6);
+    box-shadow: 1px 1px 2px 1px; 
+    cursor: pointer;
+}
+
+.delete-btn:active {
+    background-color: rgba(228, 20, 20, 0.4)
 }
 
 

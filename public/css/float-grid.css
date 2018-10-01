@@ -18,10 +18,10 @@
 }
 
 .row {
-    max-width: 1000px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 0 auto;
+    max-width: 1200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
 }
     /* Clearfix */
 .row::before,
