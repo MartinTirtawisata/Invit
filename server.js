@@ -41,16 +41,24 @@ app.get('/api/anything', jwtAuth, (req, res) => {
 });  
 
 //HTML URL
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({defaultLayout: 'base'}));
+app.set('view engine', 'handlebars')
+
+app.get('/index', function(req, res){
+   res.render('index');
+})
+
 app.get('/login', function(req, res){
-    res.sendFile(__dirname + '/views/login.html')
-})
+    res.render('login');
+ })
 
-app.get('/signup', function(req, res){
-    res.sendFile(__dirname + '/views/signup.html')
-})
+ app.get('/login', function(req, res){
+    res.render('login');
+ })
 
-app.get('/seller', function(req, res){
-    res.sendFile(__dirname + '/views/seller.html')
+app.get('/user', function(req, res){
+    res.render('user');
 })
 
 // API URL

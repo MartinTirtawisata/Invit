@@ -1,12 +1,20 @@
+h1 {
+    color: white;
+}
+
+.title {
+    text-align: center;
+    margin-top: 10%;
+}
 /* Form */
-.authentication-form{
+.sign-up-form{
     width: 500px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 14%;
+    margin-top: 10px;
     border-radius: 10px;
     background-color: rgb(233, 229, 229);
-    padding: 15px 30px
+    padding: 15px 30px;
 }
 
 legend {
@@ -25,6 +33,13 @@ fieldset input {
 
 fieldset {
     border: none;
+}
+.agreement {
+    text-align: center;
+    font-size: 14px;
+}
+.rules {
+    font-weight: bold;
 }
 
 button {
