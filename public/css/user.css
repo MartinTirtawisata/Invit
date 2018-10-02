@@ -62,7 +62,7 @@
 /* Main */
 .main-content {
     min-height: 50%;
-    max-width: 1500px;
+    max-width: 1200px;
     padding-left: 10px;
     padding-right: 10px;
     margin: 7% auto 0px 20%;
@@ -91,14 +91,14 @@
 
 /* Search Bar */
 .search-label{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 #search{
     margin-top: 5px;
     margin-right: 8px;
-    width: 35%;
+    width: 45%;
     height: 35px;
     font-size: 16px;
     border: none;
@@ -221,7 +221,21 @@ legend{
     border: 0;
     background-color:rgba(33, 165, 177,0.6); 
     border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
 }
+
+.submit-btn:hover {
+    background-color:rgba(33, 165, 177,0.8); 
+    box-shadow: 4px 4px 4px;
+}
+
+.submit-btn:active {
+    background-color:rgba(33, 165, 177,0.6); 
+}
+
+
 /* End Add/Update Modal */
 
 /* Product Table List */

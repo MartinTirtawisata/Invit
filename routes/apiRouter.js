@@ -100,7 +100,7 @@ router.get('/products/:id',jsonParser, (req, res) => {
 // POST products
 router.post('/products', jsonParser, (req, res) => {
     //Checking for required fields[keys]
-    const requiredFields = ['seller', 'product_name','product_img','product_desc','price']
+    const requiredFields = ['seller', 'product_name','product_desc','price']
     requiredFields.forEach(field => {
         if (!(field in req.body)){
             let message = `the ${field} field is missing`

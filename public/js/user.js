@@ -51,6 +51,11 @@ $('.close-btn').on('click', function(){
     $('#add-product-modal').css('display','none');
 })
 
+$('.js-add-product-form').submit(function(e) {
+    e.preventDefault();
+    $('#add-product-modal').css('display','none');
+})
+
 function addProducts(product){
     console.log('adding product ' + JSON.stringify(product));
     $.ajax({
@@ -66,17 +71,18 @@ function addProducts(product){
 }
 
 function handleAddProduct(){
-    $('.add-product-form').submit(function(e){
+    $('.js-add-product-form').submit(function(e){
         e.preventDefault();
         console.log('handling add product')
         addProducts({
             seller: '5bb23daaeca5741b3a97d49a',
             product_name: $(e.currentTarget).find('#productName').val(),
             product_desc: $(e.currentTarget).find('#productDesc').val(),
-            product_img: $(e.currentTarget).find('#productImg').val(),
             price: $(e.currentTarget).find('#productPrice').val()
         })
-        console.log($(e.currentTarget).find('#productImg').val())
+        $(e.currentTarget).find('#productName').val('')
+        $(e.currentTarget).find('#productDesc').val('')
+        $(e.currentTarget).find('#productPrice').val('')
     })
 }
 
@@ -87,9 +93,15 @@ $(handleAddProduct());
 
 $('.js-product-table').on('click','.js-edit-btn', function(){
     $('#update-product-modal').css('display','block');
+    $()
 })
 
 $('.close-btn').on('click', function(){
+    $('#update-product-modal').css('display','none');
+})
+
+$('.js-update-product-form').submit(function(e) {
+    e.preventDefault();
     $('#update-product-modal').css('display','none');
 })
 
@@ -112,10 +124,12 @@ function handleProductUpdate(productID){
             _id: productID,
             product_name: $(e.currentTarget).find('#productName').val(),
             product_desc: $(e.currentTarget).find('#productDesc').val(),
-            product_img: 'some picture',
             price: $(e.currentTarget).find('#productPrice').val()
-        })
-    })
+        });
+        $(e.currentTarget).find('#productName').val('')
+        $(e.currentTarget).find('#productDesc').val('')
+        $(e.currentTarget).find('#productPrice').val('')
+    });
 }
 
 function updateProductData(product){
@@ -156,6 +170,12 @@ function handleDeleteProduct(){
 $(handleDeleteProduct());
 
 // Filter Product Name
+$('#search').on('keyup', function(){
+    let value = $(this).val().toLowerCase();
+    $('#product-table-body tr').filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
 
 
 

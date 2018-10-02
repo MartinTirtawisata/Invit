@@ -27,9 +27,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="search-bar content-box">
-                    <label class="search-label" for="search">Search By Name</label><br>
-                    <input id="search" onkeyup="filterProduct()" type="text" placeholder="Search By Product Name">
-                    <button class="search-btn">Search</button>
+                    <label class="search-label" for="search">Search</label><br>
+                    <input id="search" type="text" placeholder="Search here...">
                 </div>
             </div>
         </div>
@@ -55,7 +54,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="js-product-table-body"></tbody>
+                    <tbody class="js-product-table-body" id="product-table-body"></tbody>
                 </table>
             </div>
         </div>
@@ -69,7 +68,7 @@
                     <!-- Add Modal Content -->
                     <div class="modal-content">
                         <span class="close-btn">&times;</span>
-                        <form class="add-product-form" id="addProductForm">
+                        <form class="js-add-product-form" id="addProductForm">
                             <fieldset>
                                 <legend>Adding New Product</legend>
                                 <label for="productName">Product Name</label>
@@ -123,26 +122,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/user.js"></script>
-
-<script>
-function filterProduct() {
-  let input, filter, table, tr, td, i;
-  input = document.getElementById("search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("table");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
 
 
 
