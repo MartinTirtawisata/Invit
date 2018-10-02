@@ -50,6 +50,7 @@
     width: 100%;
     padding-left: 15px;
     padding-bottom: 15px;
+    font-size: 18px;
 }
 
 .side-nav-item:hover {
@@ -111,16 +112,18 @@
     border: 0;
     outline: 0;
     font-size: 16px;
-    background-color: rgba(34, 47, 62,0.1);
+    background-color:rgba(33, 165, 177,0.8); 
     border-radius: 5px;
-    color: rgba(34, 47, 62,0.7);
+    color: white;
     padding: 10px;
+    font-weight: bold;
     
 }
 
 .search-btn:hover {
     background-color: lightgrey;
-    box-shadow: 2px 2px 2px #ddd
+    box-shadow: 2px 2px 2px #ddd;
+    cursor: pointer;
 }
 
 .search-btn:active {

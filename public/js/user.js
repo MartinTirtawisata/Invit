@@ -11,7 +11,7 @@ function getAndDisplayProductList(){
             console.log(d)
             return `<tr class="js-product-data" id=${d._id}>
             <td>${index + 1}</td>
-            <td>${d.product_name}</td>
+            <td class="js-product-name">${d.product_name}</td>
             <td>${d.product_desc}</td>
             <td>${d.price}</td>
             <td>
@@ -154,6 +154,10 @@ function handleDeleteProduct(){
 }
 
 $(handleDeleteProduct());
+
+// Filter Product Name
+
+
 
 
 
