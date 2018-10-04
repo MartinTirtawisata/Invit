@@ -10,10 +10,10 @@ function getAndDisplayProductList(){
         let productData = product_data.map((d, index) => {
             console.log(d)
             return `<tr class="js-product-data" id=${d._id}>
-            <td>${index + 1}</td>
-            <td class="js-product-name">${d.product_name}</td>
-            <td>${d.product_desc}</td>
-            <td>${d.price}</td>
+            <td id="product-id">${index + 1}</td>
+            <td class="js-product-name" id="product-name">${d.product_name}</td>
+            <td id="product-desc">${d.product_desc}</td>
+            <td id="product-price">${d.price}</td>
             <td>
                 <button class="js-edit-btn edit-btn"><span class="edit-text">Edit</span></button>
                 <button class="js-dlt-btn delete-btn"><span>Delete</span></button>    
@@ -93,7 +93,6 @@ $(handleAddProduct());
 
 $('.js-product-table').on('click','.js-edit-btn', function(){
     $('#update-product-modal').css('display','block');
-    $()
 })
 
 $('.close-btn').on('click', function(){
@@ -108,9 +107,19 @@ $('.js-update-product-form').submit(function(e) {
 function getProductId(){
     $('.js-product-table').on('click', '.js-edit-btn', function(e){
         e.preventDefault();
-        let productID = $(e.currentTarget).closest('tr').attr('id')
+        let productID = $(e.currentTarget).closest('tr').find('td#product-id').text();
         console.log(productID);
-        $('.update-legend').text(`Updating Product ID:${productID}`)
+        let productName = $(e.currentTarget).closest('tr').find('td#product-name').text();
+        console.log(productName);
+        let productDesc = $(e.currentTarget).closest('tr').find('td#product-desc').text();
+        console.log(productDesc);
+        let productPrice = $(e.currentTarget).closest('tr').find('td#product-price').text();
+        console.log(productPrice);
+
+        $('.update-legend').text(`Updating Product ID: ${productID}`);
+        $('#update-product-name').val(productName);
+        $('#update-product-desc').val(productDesc); 
+        $('#update-product-price').val(productPrice);
         handleProductUpdate(productID);
     })
 }
