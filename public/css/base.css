@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(230, 230, 230, 1.0);
+    font-family: 'Muli', sans-serif;
+}
+
+/* Nav Bar */
+
+.top-navbar{
+    position: fixed;
+    width: 100%;
+    padding: 1px;
+    background-color:rgba(34, 47, 62,0.7);
+    height: 50px;
+    max-height: 50px;
+    top: 0;
+    right: 0;
+}
+
+.top-nav {
+    list-style: none;
+    float: right;
+    padding: 0px 10px;
+}
+
+.top-nav li{
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.top-nav a{
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+/* End Nav Bar */

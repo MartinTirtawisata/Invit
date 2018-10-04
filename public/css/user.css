@@ -1,39 +1,8 @@
-* {
-    box-sizing: border-box;
-}
-body {
-    background-color: rgba(34, 47, 62, 0.08);
-    font-family: 'Muli', sans-serif;
+main {
+    padding-bottom: 50px;
 }
 
 /* Nav */
-.top-navbar{
-    position: fixed;
-    width: 100%;
-    padding: 1px;
-    background-color:rgba(34, 47, 62,0.7);
-    height: 50px;
-    max-height: 50px;
-
-}
-
-.top-nav{
-    list-style: none;
-    float: right;
-    padding: 0px 10px;
-}
-
-.top-nav li{
-    display: inline-block;
-    padding: 0px 10px;
-}
-
-.top-nav a{
-    color: black;
-    display: block;
-    text-decoration: none;
-}
-
 .side-navbar {
     height: 100%;
     position: fixed;
@@ -85,6 +54,7 @@ body {
     width: 100%;
     padding-left: 15px;
     padding-bottom: 15px;
+    font-size: 18px;
 }
 
 .side-nav-item:hover {
@@ -96,7 +66,7 @@ body {
 /* Main */
 .main-content {
     min-height: 50%;
-    max-width: 1500px;
+    max-width: 1200px;
     padding-left: 10px;
     padding-right: 10px;
     margin: 7% auto 0px 20%;
@@ -125,14 +95,14 @@ body {
 
 /* Search Bar */
 .search-label{
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
 }
 
 #search{
     margin-top: 5px;
     margin-right: 8px;
-    width: 35%;
+    width: 45%;
     height: 35px;
     font-size: 16px;
     border: none;
@@ -146,16 +116,18 @@ body {
     border: 0;
     outline: 0;
     font-size: 16px;
-    background-color: rgba(34, 47, 62,0.1);
+    background-color:rgba(33, 165, 177,0.8); 
     border-radius: 5px;
-    color: rgba(34, 47, 62,0.7);
+    color: white;
     padding: 10px;
+    font-weight: bold;
     
 }
 
 .search-btn:hover {
     background-color: lightgrey;
-    box-shadow: 2px 2px 2px #ddd
+    box-shadow: 2px 2px 2px #ddd;
+    cursor: pointer;
 }
 
 .search-btn:active {
@@ -253,7 +225,21 @@ legend{
     border: 0;
     background-color:rgba(33, 165, 177,0.6); 
     border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
 }
+
+.submit-btn:hover {
+    background-color:rgba(33, 165, 177,0.8); 
+    box-shadow: 4px 4px 4px;
+}
+
+.submit-btn:active {
+    background-color:rgba(33, 165, 177,0.6); 
+}
+
+
 /* End Add/Update Modal */
 
 /* Product Table List */

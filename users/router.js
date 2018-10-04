@@ -9,7 +9,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 //POST seller - Sign Up
-router.post('/seller', jsonParser, (req, res) => {
+router.post('/register', jsonParser, (req, res) => {
     //Checking for the required fields in the keys
     const requiredFields = ['userName','password']
     const missingField = requiredFields.find(field => !(field in req.body));
