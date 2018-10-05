@@ -18,10 +18,11 @@
 }
 
 .row {
-    max-width: auto;
+    max-width: 1200px;
     padding-left: 10px;
     padding-right: 10px;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
     /* Clearfix */
 .row::before,

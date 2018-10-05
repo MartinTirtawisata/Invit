@@ -1,110 +1,106 @@
-<head>
-    {{!-- <link rel="stylesheet" href="/css/user.css"> --}}
-</head>
+<header role="banner">
+    <div class="row">
+        <div class="col-12">
+            <p class="shop-title"><span class="js-seller-name"></span>'s Online Store</p>
+            <p class="profile-username">@<span class="js-seller-username"></span></p>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
 <main class="col-12" role="main">
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="row">
-            <header class="col-12">
-                <p class="shop-title"><span class="js-seller-name"></span>'s Online Store</p>
-                <p class="profile-username">@<span class="js-seller-username"></span></p>
-            </header>
-        </div>
-        
-
-        <!-- Search Bar-->
-        <div class="row">
-            <div class="col-12">
-                <div class="search-bar content-box">
-                    <label class="search-label" for="search">Search</label><br>
-                    <input id="search" type="text" placeholder="Search here...">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <p class="content-box">Revenue: <span class="revenue" >$100,000</span></p>
-            </div>
-            <div class="col-6">
-                <p class="content-box">Products: <span class="product-qty">5</span></p>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-12 product-table">                
-                <table class="js-product-table" id="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Product Name</th>
-                            <th>Product Description</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="js-product-table-body" id="product-table-body"></tbody>
-                </table>
-            </div>
-        </div>
-        <!-- The Add Modal -->
-        <div class="row">
-            <div class="col-12">
-                <button id="add-modal-btn" class="add-modal-btn"><span>Add</span></button>
-            </div>  
-            <div class="col-12">
-                <div id="add-product-modal" class="add-product-modal">
-                    <!-- Add Modal Content -->
-                    <div class="modal-content">
-                        <span class="close-btn">&times;</span>
-                        <form class="js-add-product-form" id="addProductForm">
-                            <fieldset>
-                                <legend>Adding New Product</legend>
-                                <label for="productName">Product Name</label>
-                                <input class="input" id="productName" type="text" name="productName" required>
-                                
-                                <label for="productDesc"><span>Product Description</span></label>    
-                                <input class="input" id="productDesc" type="text" name="productDesc" required>
-                                
-                                <label for="productPrice"><span>Price</span></label>    
-                                <input class="input" id="productPrice" type="text" name="productPrice" required>
-                                
-                                </label>
-                                <button class="submit-btn" type="submit">Submit</button>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- The Update Modal -->
-        <div id="update-product-modal" class="update-product-modal">
-            <!-- Update Modal Content -->
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <form class="js-update-product-form update-product-form" id="updateProductForm">
-                    <fieldset>
-                        <legend class="update-legend"></legend>
-                        <label>
-                            <span>Product Name</span>
-                            <input class="input" id="update-product-name" type="text" name="update-product-name" required>
-                        </label>    
-                        <label>
-                            <span>Product Description</span>
-                            <input class="input" id="update-product-desc" type="text" name="update-product-desc" required>
-                        </label>
-                        <label>
-                            <span>Price</span>
-                            <input class="input" id="update-product-price" type="text" name="update-product-price" required>
-                        </label>
-                        <button class="submit-btn" type="submit">Submit</button>
-                    </fieldset>
-                </form>
+    <!-- Search Bar-->
+    <div class="row">
+        <div class="col-12">
+            <div class="search-bar content-box">
+                <label class="search-label" for="search">Search</label><br>
+                <input id="search" type="text" placeholder="Search here...">
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-6">
+            <p class="content-box">Revenue: <span class="revenue" >$100,000</span></p>
+        </div>
+        <div class="col-6">
+            <p class="content-box">Products: <span class="product-qty"></span></p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 product-table">                
+            <table class="js-product-table" id="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Product Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="js-product-table-body" id="product-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- The Add Modal -->
+    <div class="row">
+        <div class="col-12">
+            <button id="add-modal-btn" class="add-modal-btn"><span>Add</span></button>
+        </div>  
+        <div class="col-12">
+            <div id="add-product-modal" class="add-product-modal">
+                <!-- Add Modal Content -->
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <form class="js-add-product-form" id="addProductForm">
+                        <fieldset>
+                            <legend>Adding New Product</legend>
+                            <label for="productName">Product Name</label>
+                            <input class="input" id="productName" type="text" name="productName" required>
+                            
+                            <label for="productDesc"><span>Product Description</span></label>    
+                            <input class="input" id="productDesc" type="text" name="productDesc" required>
+                            
+                            <label for="productPrice"><span>Price</span></label>    
+                            <input class="input" id="productPrice" type="text" name="productPrice" required>
+                            
+                            </label>
+                            <button class="submit-btn" type="submit">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- The Update Modal -->
+    <div id="update-product-modal" class="update-product-modal">
+        <!-- Update Modal Content -->
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <form class="js-update-product-form update-product-form" id="updateProductForm">
+                <fieldset>
+                    <legend class="update-legend"></legend>
+                    <label>
+                        <span>Product Name</span>
+                        <input class="input" id="update-product-name" type="text" name="update-product-name" required>
+                    </label>    
+                    <label>
+                        <span>Product Description</span>
+                        <input class="input" id="update-product-desc" type="text" name="update-product-desc" required>
+                    </label>
+                    <label>
+                        <span>Price</span>
+                        <input class="input" id="update-product-price" type="text" name="update-product-price" required>
+                    </label>
+                    <button class="submit-btn" type="submit">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
 </main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

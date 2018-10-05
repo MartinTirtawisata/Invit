@@ -7,8 +7,9 @@ function getAndDisplayProductList(){
     console.log('retrieving product data API')
     $.getJSON(PRODUCT_URL, function (product_data){
         console.log("Rendering product data")
+        let productQtyArray = [];
         let productData = product_data.map((d, index) => {
-            console.log(d)
+            $('.product-qty').text(index + 1)
             return `<tr class="js-product-data" id=${d._id}>
             <td id="product-id">${index + 1}</td>
             <td class="js-product-name" id="product-name">${d.product_name}</td>
@@ -29,7 +30,7 @@ function getAndDisplayProductList(){
 //GET Seller
 function getAndDisplaySeller(){
     $.getJSON(SELLER_URL, function(seller_data) {
-        console.log(seller_data)
+        // console.log(seller_data)
         seller_data.map(s => {
             $('.js-seller-name').html(`${s.firstName} ${s.lastName}`)
             $('.js-seller-username').html(`${s.userName}`)
@@ -185,6 +186,7 @@ $('#search').on('keyup', function(){
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
+
 
 
 
