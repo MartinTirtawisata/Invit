@@ -12,7 +12,7 @@ const {Product, Seller} = require('../models')
 
 
 //GET all sellers
-router.get('/sellers', jwtAuth, jsonParser, (req, res) => {
+router.get('/sellers', jsonParser, (req, res) => {
     Seller.find().then(sellers => {
         res.json(sellers);
     }).catch(onRejected => {

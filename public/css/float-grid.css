@@ -70,10 +70,16 @@
     .col-12 {
         width: 100%;
     }
+}
 
-    /* .side-navbar{
-        max-width: 250px;
-    } */
+@media only screen and (max-width: 640px){
+    .side-navbar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0px;
+    }
 }
     
     

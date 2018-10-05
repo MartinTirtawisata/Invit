@@ -2,25 +2,24 @@ main {
     padding-bottom: 50px;
 }
 
-/* Nav */
-.side-navbar {
-    height: 100%;
-    position: fixed;
-    background-color:rgba(33, 165, 177,0.6); 
-    color:white;
-    max-width: 250px;
-    width: 25%;
+/* Main */
+header {
+    color:rgba(34, 47, 62,0.8);
 }
 
-.user-title {
-    width: 100%;
-    text-align: center;
-    margin-top: 25%;
+.main-content {
+    min-height: 50%;
+    max-width: 1200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
-.profile-name{
-    margin-bottom: 0px;
-    font-size: 28px;
+.shop-title {
+    font-size: 32px;
     font-weight: bold;
 }
 
@@ -28,53 +27,6 @@ main {
     margin-top: 5px;
     font-size: 24px;
     font-style: italic;
-}
-
-.sub-nav{
-    font-size: 16px;
-    text-decoration-line: underline;
-    margin-bottom: 0px;
-}
-
-.side-nav {
-    list-style: none;
-    padding-left: 0px;
-    margin: 5px 0px;
-}
-
-.side-nav a{
-    display: block;
-    color: white;
-    padding-top: 15px;
-    font-size: 16px;
-    text-decoration-line: none;
-}
-
-.side-nav-item{
-    width: 100%;
-    padding-left: 15px;
-    padding-bottom: 15px;
-    font-size: 18px;
-}
-
-.side-nav-item:hover {
-    background-color: rgba(33, 165, 177,1.0)
-}
-
-/* End Nav */
-
-/* Main */
-.main-content {
-    min-height: 50%;
-    max-width: 1200px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 7% auto 0px 20%;
-}
-
-.shop-title {
-    font-size: 32px;
-    font-weight: bold;
 }
 
 /* Content Box */
