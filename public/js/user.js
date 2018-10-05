@@ -29,7 +29,7 @@ function getAndDisplayProductList(){
 //GET Seller
 function getAndDisplaySeller(){
     $.getJSON(SELLER_URL, function(seller_data) {
-        // console.log(seller_data)
+        console.log(seller_data)
         seller_data.map(s => {
             $('.js-seller-name').html(`${s.firstName} ${s.lastName}`)
             $('.js-seller-username').html(`${s.userName}`)
@@ -131,13 +131,13 @@ function handleProductUpdate(productID){
         console.log('handling updating data')
         updateProductData({
             _id: productID,
-            product_name: $(e.currentTarget).find('#productName').val(),
-            product_desc: $(e.currentTarget).find('#productDesc').val(),
-            price: $(e.currentTarget).find('#productPrice').val()
+            product_name: $(e.currentTarget).find('#update-product-name').val(),
+            product_desc: $(e.currentTarget).find('#update-product-desc').val(),
+            price: $(e.currentTarget).find('#update-product-price').val()
         });
-        $(e.currentTarget).find('#productName').val('')
-        $(e.currentTarget).find('#productDesc').val('')
-        $(e.currentTarget).find('#productPrice').val('')
+        $(e.currentTarget).find('#update-product-name').val('')
+        $(e.currentTarget).find('#update-product-desc').val('')
+        $(e.currentTarget).find('#update-product-price').val('')
     });
 }
 

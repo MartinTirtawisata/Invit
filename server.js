@@ -31,14 +31,13 @@ app.use(function (req, res, next) {
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
+// const jwtAuth = passport.authenticate('jwt', {session: false});
 
-const jwtAuth = passport.authenticate('jwt', {session: false});
-
-app.get('/api/anything', jwtAuth, (req, res) => {
-    return res.json({
-        data: 'rosebud'
-    });
-});  
+// app.get('/api/anything', jwtAuth, (req, res) => {
+//     return res.json({
+//         data: 'rosebud'
+//     });
+// });  
 
 //HTML URL
 app.set('views', path.join(__dirname, 'views'));

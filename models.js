@@ -36,12 +36,9 @@ sellerSchema.statics.hashPassword = function(password) {
 };
 
 // Product Schema
-let imageSchema = mongoose.Schema({img: 'string'});
-
 let productSchema = mongoose.Schema({
     seller: {type: mongoose.Schema.Types.ObjectId, ref: 'Seller'},
     product_name: 'string',
-    product_img: [imageSchema],
     product_desc: 'string',
     price: 'number',
     createdAt: {type: Date, default: Date.now}
