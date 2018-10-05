@@ -4,17 +4,17 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-// const faker = require('faker')
+// const passport = require('passport')
 
 const {Product, Seller} = require('../models')
 
+// const jwtAuth = passport.authenticate('jwt', {session: false});
+
+
 //GET all sellers
-router.get('/sellers',jsonParser, (req, res) => {
+router.get('/sellers', jwtAuth, jsonParser, (req, res) => {
     Seller.find().then(sellers => {
         res.json(sellers);
-        
-        // console.log(faker.lorem.word())
-
     }).catch(onRejected => {
         console.error(onRejected);
         res.status(400).json({message: "something bad happened"})
@@ -118,12 +118,6 @@ router.post('/products', jsonParser, (req, res) => {
                 // product_img: req.body.product_img,
                 product_desc: req.body.product_desc,
                 price: req.body.price
-            }).then(product => {
-                product.product_img.push({img: req.body.product_img})
-                res.status(201).json(product);
-            }).catch(onRejected => {
-                // console.error(onRejected);;
-                res.status(400).json({error: "Something terrible happened"});
             })
         } else {
             let message = `the seller with the id ${req.body.seller} doesn't exist`

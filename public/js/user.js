@@ -29,7 +29,7 @@ function getAndDisplayProductList(){
 //GET Seller
 function getAndDisplaySeller(){
     $.getJSON(SELLER_URL, function(seller_data) {
-        // console.log(seller_data)
+        console.log(seller_data)
         seller_data.map(s => {
             $('.js-seller-name').html(`${s.firstName} ${s.lastName}`)
             $('.js-seller-username').html(`${s.userName}`)
