@@ -26,48 +26,6 @@ router.get('/sellers/:id',jsonParser, (req, res) => {
     });
 });
 
-// PUT seller
-router.put('/sellers/:id', jsonParser, (req, res) => {
-    if (req.params.id !== req.body._id){
-        let message = `The param id ${req.params.id} and body id ${req.body._id} does not match`
-        console.error(message);
-        res.status(400).json({error: message});
-    }
-
-    //Check for existing username
-    Seller.findOne({userName: req.body.userName}).then(seller => {
-        if (seller){
-            let message = `The username ${req.body.userName} has been taken`
-            console.error(message);
-            res.status(400).json({error: message});
-        } else {
-            Seller.findByIdAndUpdate(req.params.id, {$set: {
-                _id: req.params.id,
-                userName: req.body.userName,
-                password: req.body.password,
-                email: req.body.email,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName
-            }}).then(seller => {
-                    res.status(203).json({success: `the ${seller} has been updated`}).end()
-            }).catch(onRejected => {
-                    console.error(onRejected);
-                    res.status(500).json({error: onRejected})
-            })
-        };
-    });   
-});
-
-// DELETE seller
-router.delete('/sellers/:id', jsonParser, (req, res)=> {
-    Seller.findByIdAndRemove(req.params.id).then(seller => {
-        res.status(204).end();
-    }).catch(onRejected => {
-        console.log(onRejected)
-        res.status(500).json({error: onRejected})
-    })
-})
-
 //API endpoint for products --
 // GET all products
 router.get('/products', jsonParser, (req, res) => {

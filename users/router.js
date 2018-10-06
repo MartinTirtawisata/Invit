@@ -71,7 +71,7 @@ router.post('/register', jsonParser, (req, res) => {
         });
     }
     
-    let {userName, password, email, firstName = '', lastName = ''} = req.body;
+    let {userName, password, firstName = '', lastName = ''} = req.body;
     // userName and Password have to come pre-trimmed from the user, otherwise an error is thrown
     firstName = firstName.trim();
     lastName = lastName.trim();
@@ -94,13 +94,12 @@ router.post('/register', jsonParser, (req, res) => {
         return Seller.create({
             userName,
             password: hash,
-            email,
             firstName,
             lastName
         });
     }).then(user => {
-        console.log('Password Hashed. Success')
-        return res.status(201).json(user.serialize());
+        console.log('Success, Password Hashed')
+        return res.status(201).json(user);
     }).catch(err => {
         if (err.reason === 'ValidationError'){
             return res.status(err.code).json(err);

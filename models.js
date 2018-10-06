@@ -64,7 +64,6 @@ productSchema.methods.serialize = function(){
         seller: this.sellerName,
         product_name: this.product_name,
         product_desc: this.product_desc,
-        // product_img: this.product_img
     };
 };
 
