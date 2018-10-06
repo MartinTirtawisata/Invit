@@ -1,31 +1,21 @@
-main {
-    padding-bottom: 50px;
+header {
+    color:rgba(34, 47, 62,0.8);
+    margin-top: 5em;
 }
 
 /* Main */
-header {
-    color:rgba(34, 47, 62,0.8);
+main {
+    margin-top: 1em;
 }
-
-.main-content {
-    min-height: 50%;
-    max-width: 1200px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 2em;
-    margin-left: auto;
-    margin-right: auto;
-    
-}
-
 .shop-title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
+    margin: 0px;
 }
 
 .profile-username {
-    margin-top: 5px;
-    font-size: 24px;
+    margin-top: 0px;
+    font-size: 18px;
     font-style: italic;
 }
 
@@ -111,23 +101,22 @@ header {
 
 .add-product-modal{
     display: none;
-    overflow: auto;
+    max-width: 500px;
 }
 
 .update-product-modal{
     display: none;
-    overflow: auto;
+    max-width: 500px;
     margin-left: 20px;
 }
 
 .modal-content{
     background-color: white;
     padding: 25px;
-    width: 60%;
+    width: 100%;
     box-shadow: 4px 4px 20px 1px;
     border-radius: 15px;
     margin-top:5px;
-    margin-left: 5px;
 }
 
 .close-btn {
@@ -202,7 +191,7 @@ table {
 }
 
 th{
-    background-color:rgba(33, 165, 177,0.8); 
+    background-color:rgba(33, 165, 177,1.0); 
     color: white;
 }
 
