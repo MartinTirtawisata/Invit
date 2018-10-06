@@ -11,7 +11,7 @@ function getAndDisplayProductList(){
             <td class="product-id">${index + 1}</td>
             <td class="js-product-name product-name">${d.product_name}</td>
             <td class="product-desc">${d.product_desc}</td>
-            <td class="product-price">${d.price}</td>
+            <td class="product-price"><span>$</span>${d.price}</td>
             <td>
                 <button class="js-edit-btn edit-btn"><span class="edit-text">Edit</span></button>
                 <button class="js-dlt-btn delete-btn"><span>Delete</span></button>    
