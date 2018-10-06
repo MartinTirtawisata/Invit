@@ -103,13 +103,15 @@ router.post('/products', jsonParser, (req, res) => {
     })
 
     Seller.findById(req.body.seller).then(seller => {
+        console.log(seller);
         if (seller){
             Product.create({
                 seller: req.body.seller,
                 product_name: req.body.product_name,
-                // product_img: req.body.product_img,
                 product_desc: req.body.product_desc,
                 price: req.body.price
+            }).then(function(product) {
+                res.status(200).json(product);
             })
         } else {
             let message = `the seller with the id ${req.body.seller} doesn't exist`

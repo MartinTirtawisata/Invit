@@ -48,39 +48,37 @@ $('.close-btn').on('click', function(){
     $('#add-product-modal').prop('hidden','true');
 })
 
-$('.js-add-product-form').submit(function(e) {
-    e.preventDefault();
-    $('#add-product-modal').css('display','none');
-    $('#add-product-modal').prop('hidden','true');
-})
-
 function addProducts(product){
     $.ajax({
         method: 'POST',
         url: PRODUCT_URL,
         data: JSON.stringify(product),
-        success: getAndDisplayProductList(),
+        success: function(data) {
+            getAndDisplayProductList()
+        },
         dataType: 'json',
         contentType: 'application/json'
     });
 }
 
-function handleAddProduct(){
-    $('.js-add-product-form').submit(function(e){
-        e.preventDefault();
-        addProducts({
-            seller: '5bb23daaeca5741b3a97d49a',
-            product_name: $(e.currentTarget).find('#productName').val(),
-            product_desc: $(e.currentTarget).find('#productDesc').val(),
-            price: $(e.currentTarget).find('#productPrice').val()
-        })
-        $(e.currentTarget).find('#productName').val('')
-        $(e.currentTarget).find('#productDesc').val('')
-        $(e.currentTarget).find('#productPrice').val('')
-    })
-}
 
-$(handleAddProduct());
+$('.js-add-product-form').submit(function(e){
+    e.preventDefault();
+    addProducts({
+        seller: '5bb23daaeca5741b3a97d49a',
+        product_name: $(e.currentTarget).find('#productName').val(),
+        product_desc: $(e.currentTarget).find('#productDesc').val(),
+        price: $(e.currentTarget).find('#productPrice').val()
+    })
+    $(e.currentTarget).find('#productName').val('')
+    $(e.currentTarget).find('#productDesc').val('')
+    $(e.currentTarget).find('#productPrice').val('')
+    $('#add-product-modal').css('display','none');
+    $('#add-product-modal').prop('hidden','true');
+})
+
+
+
 
 // -----
 // UPDATE Product
@@ -138,7 +136,7 @@ function updateProductData(product){
         method: 'PUT',
         url: PRODUCT_URL + "/" + product._id,
         data: JSON.stringify(product),
-        success: getAndDisplayProductList(),
+        success: getAndDisplayProductList,
         dataType: 'json',
         contentType: 'application/json'
     })
@@ -153,18 +151,18 @@ function deleteOneProduct(productID){
     $.ajax({
         url: PRODUCT_URL + "/" + productID,
         method: "DELETE",
-        success: getAndDisplayProductList()
+        success: getAndDisplayProductList
     })
 }
 
-function handleDeleteProduct(){
-    $('.js-product-table').on('click', '.js-dlt-btn', function(event){
-        event.preventDefault();
-        deleteOneProduct($(event.currentTarget).closest('.js-product-data').attr('id'));
-    })
-}
+$('.js-product-table').on('click', '.js-dlt-btn', function(event){
+    event.preventDefault();
+    // add javascript pop up if yes
+    deleteOneProduct($(event.currentTarget).closest('.js-product-data').attr('id'));
+})
 
-$(handleDeleteProduct());
+
+
 
 // Filter Product Name
 $('#search').on('keyup', function(){
