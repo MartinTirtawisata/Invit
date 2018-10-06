@@ -17,16 +17,12 @@ function handleUserRegistration(){
 }
 
 function registerUserAjax(seller){
-    console.log('adding the user')
     $.ajax({
         method: 'POST',
         url: USER_URL,
         data: JSON.stringify(seller),
         success: function(data){
-            console.log('success')
-            // Edit redirection later. 
             window.location.assign('http://localhost:8080/user')
-            
         },
         dataType: 'json',
         contentType: 'application/json'
@@ -53,7 +49,6 @@ function authenticateUserAjax(user){
         url: AUTH_URL,
         data: JSON.stringify(user),
         success: function(data) {
-            console.log('User successfully logged in');
             window.location.assign('http://localhost:8080/user')
         },
         dataType: 'json',

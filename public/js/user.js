@@ -68,7 +68,6 @@ function addProducts(product){
 function handleAddProduct(){
     $('.js-add-product-form').submit(function(e){
         e.preventDefault();
-        console.log('handling add product')
         addProducts({
             seller: '5bb23daaeca5741b3a97d49a',
             product_name: $(e.currentTarget).find('#productName').val(),
@@ -106,13 +105,9 @@ function getProductId(){
     $('.js-product-table').on('click', '.js-edit-btn', function(e){
         e.preventDefault();
         let productID = $(e.currentTarget).closest('tr').find('td.product-id').text();
-        console.log(productID);
         let productName = $(e.currentTarget).closest('tr').find('td.product-name').text();
-        console.log(productName);
         let productDesc = $(e.currentTarget).closest('tr').find('td.product-desc').text();
-        console.log(productDesc);
         let productPrice = $(e.currentTarget).closest('tr').find('td.product-price').text();
-        console.log(productPrice);
 
         $('.update-legend').text(`Updating Product ID: ${productID}`);
         $('#update-product-name').val(productName);

@@ -4,12 +4,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-// const passport = require('passport')
-
 const {Product, Seller} = require('../models')
-
-// const jwtAuth = passport.authenticate('jwt', {session: false});
-
 
 //GET all sellers
 router.get('/sellers', jsonParser, (req, res) => {
@@ -33,14 +28,13 @@ router.get('/sellers/:id',jsonParser, (req, res) => {
 
 // PUT seller
 router.put('/sellers/:id', jsonParser, (req, res) => {
-    //This cross checks that the parameter ID is equal to the req.body ID so that we are updating the correct one
     if (req.params.id !== req.body._id){
         let message = `The param id ${req.params.id} and body id ${req.body._id} does not match`
         console.error(message);
         res.status(400).json({error: message});
     }
 
-    //We are now again checking for existing usernames
+    //Check for existing username
     Seller.findOne({userName: req.body.userName}).then(seller => {
         if (seller){
             let message = `The username ${req.body.userName} has been taken`
@@ -74,8 +68,7 @@ router.delete('/sellers/:id', jsonParser, (req, res)=> {
     })
 })
 
-//API endpoint for products
-
+//API endpoint for products --
 // GET all products
 router.get('/products', jsonParser, (req, res) => {
     // add product.find({seller:sellerID})
@@ -109,7 +102,6 @@ router.post('/products', jsonParser, (req, res) => {
         }
     })
 
-    //We have to check whether the seller exists to connect it with the product
     Seller.findById(req.body.seller).then(seller => {
         if (seller){
             Product.create({
@@ -124,15 +116,13 @@ router.post('/products', jsonParser, (req, res) => {
             res.status(500).json({error: message});
         }
     }).catch(onRejected => {
-        // console.log(onRejected);
+        console.log(onRejected);
         res.status(500).json({error: "something went wrong"});
     })
 })
 
 // PUT products
 router.put('/products/:id', jsonParser, (req, res) => {
-  
-    //If one of the updateable fields are in the req.body. Set it in productUpdate
     const productUpdate = {}
     const updateableField = ['product_name','product_img','product_desc','price']
     updateableField.forEach(item => {
@@ -140,7 +130,6 @@ router.put('/products/:id', jsonParser, (req, res) => {
             productUpdate[item] = req.body[item]
         }
     })
-
     Product.findByIdAndUpdate(req.params.id, {$set: productUpdate})
     .then(product => {
         res.status(203).json(product).end();
@@ -156,7 +145,5 @@ router.delete('/products/:id', jsonParser, (req, res)=> {
         res.status(500).json({error: onRejected})
     })
 })
-
-
 
 module.exports = router;

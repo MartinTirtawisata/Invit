@@ -3,9 +3,6 @@ global.TEST_DATABASE_URL = "mongodb://localhost/test-e-commerce-node-app";
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-//mongoose is imported because we have to run the server here and import that test database here
-
-// const TEST_DATABASE_URL = require('../config');
 const mongoose = require('mongoose');
 const faker = require('faker')
 const expect = chai.expect;
@@ -29,11 +26,9 @@ function generateSellerData(){
 function seedSellerData(){
     console.log('seeding seller data')
     let sellerDataSeed = [];
-
     for (let i=0; i<10; i++){
         sellerDataSeed.push(generateSellerData())
     }
-    
     return Seller.insertMany(sellerDataSeed);
 }
 
@@ -54,7 +49,6 @@ function seedProductData(seller_id){
     for (let i=0; i < 10; i++){
         productDataSeed.push(generateProductData(seller_id));
     }
-
     return Product.insertMany(productDataSeed);
 }
 
@@ -63,7 +57,6 @@ function tearDownDB(){
     return mongoose.connection.dropDatabase();
 }
 
-
 describe("Testing Seller and Product API resource", function(){
     before(function(){
         return runServer(TEST_DATABASE_URL);
@@ -71,11 +64,9 @@ describe("Testing Seller and Product API resource", function(){
 
     beforeEach(function(){
         return seedSellerData().then(seller => {
-            // console.log(seller[0]._id)
             let seller_id = seller[0]._id
             return seedProductData(seller_id)
         }).catch(err => {
-            // console.error(err)
         })
     });
   
@@ -89,17 +80,15 @@ describe("Testing Seller and Product API resource", function(){
 
     describe('GET endpoints for seller', function(){
         it('should retrieve seller information', function(){
-            //Test for both the response and the mongoose
             let res;
             return chai.request(app).get('/api/sellers').then(_res => {
                 res = _res
                 expect(res).to.have.status(200);
                 expect(res).to.be.json;
                 expect(res.body).to.have.lengthOf.at.least(1);
-    
-                //Return - counting the sellers stored in Mongo.
                 return Seller.count();
             }).then(function(sellerCount) {
+                // Checks database for correct length
                 expect(res.body).to.have.lengthOf(sellerCount)
             });
         });
@@ -109,7 +98,6 @@ describe("Testing Seller and Product API resource", function(){
     //     it('should create a new seller', function(){
     //         const newSellerData = generateSellerData();
     //         return chai.request(app).post('/api/sellers').send(newSellerData).then(res => {
-    //             console.log(res.body)
     //             expect(res).to.have.status(201);
     //             expect(res).to.be.json;
     //             expect(res).to.be.a('object');
@@ -133,16 +121,13 @@ describe("Testing Seller and Product API resource", function(){
                 userName: 'Martintintut',
                 password: 'password'
             }
-
             Seller.findOne().then(seller => {
                 updateSellerData.id = seller._id
-
                 return chai.request(app).put('/api/sellers').send(updateSellerData).then(res => {
                     expect(res).to.have.status(204);
                     expect(res).to.be.json;
                     return Seller.findById(updateSellerData.id)
                 }).then(seller => {
-                    // console.log(seller)
                     expect(seller._id).to.equal(updateSellerData.id);
                     expect(seller.userName).to.equal(updateSellerData.userName);
                     expect(seller.password).to.equal(updateSellerData.password);
@@ -153,7 +138,6 @@ describe("Testing Seller and Product API resource", function(){
 
     describe('DELETE endpoints for seller', function(){
         it('should delete an existing seller data', function(){
-            //Delete through ID. Query the ID first then pass it to the endpoint
             Seller.findOne().then(seller => {
                 return chai.request(app).delete(`/api/sellers/${seller._id}`).then(res => {
                     expect(res).to.have.status(204);
@@ -170,9 +154,9 @@ describe("Testing Seller and Product API resource", function(){
     //     it('should retrieve all items for products', function(){
     //         let res;
     //         return chai.request(app).get('/api/products').then(_res => {
-    //             // console.log(_res)
+    //             
     //             res = _res
-    //             // console.log(expect(res))
+    //             
     //             expect(res).to.have.status(200);
     //             expect(res.body).to.have.lengthOf.at.least(1);
     //             return Product.count()
@@ -185,11 +169,8 @@ describe("Testing Seller and Product API resource", function(){
     describe('POST endpoint for products', function(){
         it('should create a new product', function(){
             Seller.findOne().then(seller => {
-                console.log(seller._id)
                 const newProduct = generateProductData(seller._id);
                 return chai.request(app).post('/api/products').send(newProduct).then(res => {
-                    // console.log(newProduct)
-                    // console.log(res.body)
                     expect(res).to.have.status(201)
                     expect(res).to.be.json;
                     expect(res).to.be.a('object');
@@ -206,7 +187,7 @@ describe("Testing Seller and Product API resource", function(){
                     expect(product.price).to.equal(newProduct.price);
                 })
             }).catch(err => {
-                // console.error(err)
+                res.json({err})
             });
         });
     });
@@ -218,17 +199,14 @@ describe("Testing Seller and Product API resource", function(){
                 price: 15
             }
             Product.findOne().then(product => {
-                // console.log(product)
                 updateProduct.id = product._id
                 return chai.request(app).put(`/api/products`).send(updateProduct).then(res => {
-                    // console.log(res);
                     expect(res).to.have.status(204);
                     expect(res).to.be.json;
                     expect(res.body.product_name).to.equal(updateProduct.product_name);
                     expect(res.body.price).to.equal(updateProduct.price);
                     return Product.findById(updateProduct.id)
                 }).then(product => {
-                    // console.log(product)
                     expect(res.body._id).is.equal(product._id);
                     expect(res.body.product_name).is.equal(product.product_name);
                     expect(res.body.price).is.equal(product.price);

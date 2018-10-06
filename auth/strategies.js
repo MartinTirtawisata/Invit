@@ -5,7 +5,6 @@ const {Strategy: JwtStrategy, ExtractJwt} = require('passport-jwt')
 const {Seller} = require('../models');
 const {JWT_SECRET} = require('../config');
 
-// This is the strategy / the logic behind authenticating. 
 const localStrategy = new LocalStrategy({
     // usernameField = req.body.userName
     usernameField: 'userName',
