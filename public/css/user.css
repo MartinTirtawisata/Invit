@@ -101,23 +101,22 @@ main {
 
 .add-product-modal{
     display: none;
-    overflow: auto;
+    max-width: 500px;
 }
 
 .update-product-modal{
     display: none;
-    overflow: auto;
+    max-width: 500px;
     margin-left: 20px;
 }
 
 .modal-content{
     background-color: white;
     padding: 25px;
-    width: 60%;
+    width: 100%;
     box-shadow: 4px 4px 20px 1px;
     border-radius: 15px;
     margin-top:5px;
-    margin-left: 5px;
 }
 
 .close-btn {
@@ -192,7 +191,7 @@ table {
 }
 
 th{
-    background-color:rgba(33, 165, 177,0.8); 
+    background-color:rgba(33, 165, 177,1.0); 
     color: white;
 }
 

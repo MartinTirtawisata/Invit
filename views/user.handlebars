@@ -40,17 +40,21 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody class="js-product-table-body" id="product-table-body"></tbody>
+                {{!-- js table body --}}
+                <tbody class="js-product-table-body" id="product-table-body" aria-live="assertive"></tbody>
             </table>
         </div>
     </div>
-    <!-- The Add Modal -->
+    <!-- The Add Modal Btn -->
     <div class="row">
         <div class="col-12">
             <button id="add-modal-btn" class="add-modal-btn"><span>Add</span></button>
         </div>  
+    </div>
+    <div class="row">
+        {{!-- Add Modal --}}
         <div class="col-12">
-            <div id="add-product-modal" class="add-product-modal">
+            <div id="add-product-modal" class="add-product-modal" aria-live="assertive" hidden>
                 <!-- Add Modal Content -->
                 <div class="modal-content">
                     <span class="close-btn">&times;</span>
@@ -73,34 +77,34 @@
                 </div>
             </div>
         </div>
-    </div>
     
-    <!-- The Update Modal -->
-    <div id="update-product-modal" class="update-product-modal">
-        <!-- Update Modal Content -->
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <form class="js-update-product-form update-product-form" id="updateProductForm">
-                <fieldset>
-                    <legend class="update-legend"></legend>
-                    <label>
-                        <span>Product Name</span>
-                        <input class="input" id="update-product-name" type="text" name="update-product-name" required>
-                    </label>    
-                    <label>
-                        <span>Product Description</span>
-                        <input class="input" id="update-product-desc" type="text" name="update-product-desc" required>
-                    </label>
-                    <label>
-                        <span>Price</span>
-                        <input class="input" id="update-product-price" type="text" name="update-product-price" required>
-                    </label>
-                    <button class="submit-btn" type="submit">Submit</button>
-                </fieldset>
-            </form>
+    
+        <!-- Update Modal -->
+        <div id="update-product-modal" class="update-product-modal" aria-live="assertive" hidden>
+            <!-- Update Modal Content -->
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <form class="js-update-product-form update-product-form" id="updateProductForm">
+                    <fieldset>
+                        <legend class="update-legend"></legend>
+                        <label>
+                            <span>Product Name</span>
+                            <input class="input" id="update-product-name" type="text" name="update-product-name" required>
+                        </label>    
+                        <label>
+                            <span>Product Description</span>
+                            <input class="input" id="update-product-desc" type="text" name="update-product-desc" required>
+                        </label>
+                        <label>
+                            <span>Price</span>
+                            <input class="input" id="update-product-price" type="text" name="update-product-price" required>
+                        </label>
+                        <button class="submit-btn" type="submit">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
-
 </main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

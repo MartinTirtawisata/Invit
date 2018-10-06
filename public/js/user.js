@@ -4,17 +4,14 @@ const SELLER_URL = '/api/sellers'
 
 // GET Product
 function getAndDisplayProductList(){
-    console.log('retrieving product data API')
-    $.getJSON(PRODUCT_URL, function (product_data){
-        console.log("Rendering product data")
-        let productQtyArray = [];
+    $.getJSON(PRODUCT_URL, function(product_data){
         let productData = product_data.map((d, index) => {
             $('.product-qty').text(index + 1)
             return `<tr class="js-product-data" id=${d._id}>
-            <td id="product-id">${index + 1}</td>
-            <td class="js-product-name" id="product-name">${d.product_name}</td>
-            <td id="product-desc">${d.product_desc}</td>
-            <td id="product-price">${d.price}</td>
+            <td class="product-id">${index + 1}</td>
+            <td class="js-product-name product-name">${d.product_name}</td>
+            <td class="product-desc">${d.product_desc}</td>
+            <td class="product-price">${d.price}</td>
             <td>
                 <button class="js-edit-btn edit-btn"><span class="edit-text">Edit</span></button>
                 <button class="js-dlt-btn delete-btn"><span>Delete</span></button>    
@@ -24,19 +21,16 @@ function getAndDisplayProductList(){
         $('.js-product-table-body').html(productData)
     })    
 }
-
-
 //-----
 //GET Seller
 function getAndDisplaySeller(){
     $.getJSON(SELLER_URL, function(seller_data) {
-        // console.log(seller_data)
         seller_data.map(s => {
             $('.js-seller-name').html(`${s.firstName} ${s.lastName}`)
             $('.js-seller-username').html(`${s.userName}`)
-        })
-    })
-}
+        });
+    });
+};
 
 $(getAndDisplayProductList());
 $(getAndDisplaySeller());
@@ -46,26 +40,26 @@ $(getAndDisplaySeller());
 
 $('#add-modal-btn').on('click', function(){
     $('#add-product-modal').css('display','block');
-})
+    $('#add-product-modal').prop('hidden','false');
+});
 
 $('.close-btn').on('click', function(){
     $('#add-product-modal').css('display','none');
+    $('#add-product-modal').prop('hidden','true');
 })
 
 $('.js-add-product-form').submit(function(e) {
     e.preventDefault();
     $('#add-product-modal').css('display','none');
+    $('#add-product-modal').prop('hidden','true');
 })
 
 function addProducts(product){
-    console.log('adding product ' + JSON.stringify(product));
     $.ajax({
         method: 'POST',
         url: PRODUCT_URL,
         data: JSON.stringify(product),
-        success: function(data){
-            getAndDisplayProductList();
-        },
+        success: getAndDisplayProductList(),
         dataType: 'json',
         contentType: 'application/json'
     });
@@ -94,27 +88,30 @@ $(handleAddProduct());
 
 $('.js-product-table').on('click','.js-edit-btn', function(){
     $('#update-product-modal').css('display','block');
-})
+    $('#update-product-modal').prop('hidden','false');
+});
 
 $('.close-btn').on('click', function(){
     $('#update-product-modal').css('display','none');
+    $('#add-product-modal').prop('hidden','true');
 })
 
 $('.js-update-product-form').submit(function(e) {
     e.preventDefault();
     $('#update-product-modal').css('display','none');
+    $('#add-product-modal').prop('hidden','true');
 })
 
 function getProductId(){
     $('.js-product-table').on('click', '.js-edit-btn', function(e){
         e.preventDefault();
-        let productID = $(e.currentTarget).closest('tr').find('td#product-id').text();
+        let productID = $(e.currentTarget).closest('tr').find('td.product-id').text();
         console.log(productID);
-        let productName = $(e.currentTarget).closest('tr').find('td#product-name').text();
+        let productName = $(e.currentTarget).closest('tr').find('td.product-name').text();
         console.log(productName);
-        let productDesc = $(e.currentTarget).closest('tr').find('td#product-desc').text();
+        let productDesc = $(e.currentTarget).closest('tr').find('td.product-desc').text();
         console.log(productDesc);
-        let productPrice = $(e.currentTarget).closest('tr').find('td#product-price').text();
+        let productPrice = $(e.currentTarget).closest('tr').find('td.product-price').text();
         console.log(productPrice);
 
         $('.update-legend').text(`Updating Product ID: ${productID}`);
@@ -128,8 +125,6 @@ function getProductId(){
 function handleProductUpdate(productID){
     $('.js-update-product-form').submit(function(e){
         e.preventDefault();
-        console.log(productID)
-        console.log('handling updating data')
         updateProductData({
             _id: productID,
             product_name: $(e.currentTarget).find('#update-product-name').val(),
@@ -148,9 +143,7 @@ function updateProductData(product){
         method: 'PUT',
         url: PRODUCT_URL + "/" + product._id,
         data: JSON.stringify(product),
-        success: function(data){
-            getAndDisplayProductList();
-        },
+        success: getAndDisplayProductList(),
         dataType: 'json',
         contentType: 'application/json'
     })
@@ -162,7 +155,6 @@ $(getProductId());
 //DELETE Product
 
 function deleteOneProduct(productID){
-    console.log(`Deleting product` + productID)
     $.ajax({
         url: PRODUCT_URL + "/" + productID,
         method: "DELETE",
