@@ -36,10 +36,10 @@ const localStrategy = new LocalStrategy({
         return callback(err, false);
     });
 });
-
+let jwtSecret = JWT_SECRET || "SOME_SECRET_STRING"
 const jwtStrategy = new JwtStrategy(
     {
-        secretOrKey: JWT_SECRET,
+        secretOrKey: jwtSecret,
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
         algorithms: ['HS256']
     }, (payload, done) => {
