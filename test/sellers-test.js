@@ -1,11 +1,12 @@
 'use strict'
-global.TEST_DATABASE_URL = "mongodb://localhost/test-e-commerce-node-app";
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
 const faker = require('faker')
 const expect = chai.expect;
+
+const {TEST_DATABASE_URL} = require('../config')
 
 const {Product, Seller} = require('../models')
 const {app, runServer, closeServer} = require('../server');

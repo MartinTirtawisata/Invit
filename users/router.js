@@ -8,7 +8,7 @@ const {Seller} = require('../models')
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
-//POST seller - Sign Up
+//POST seller - registration    
 router.post('/register', jsonParser, (req, res) => {
     //Checking for the required fields in the keys
     const requiredFields = ['userName','password']

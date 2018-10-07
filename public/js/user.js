@@ -65,7 +65,7 @@ function addProducts(product){
 $('.js-add-product-form').submit(function(e){
     e.preventDefault();
     addProducts({
-        seller: '5bb23daaeca5741b3a97d49a',
+        seller: '5bb95d60f49ddd1f499c20aa',
         product_name: $(e.currentTarget).find('#productName').val(),
         product_desc: $(e.currentTarget).find('#productDesc').val(),
         price: $(e.currentTarget).find('#productPrice').val()

@@ -72,14 +72,12 @@ function runServer(database_url, port = PORT){
     return new Promise((resolve, reject) => {
         mongoose.connect(database_url, {useNewUrlParser: true}, err => {
             if (err){
-                // console.error(err);
                 return reject(err);
             }
             server = app.listen(port, () => {
                 console.log(`you are listening on port ${port}`)
                 resolve();
-            })
-            .on('error', function(err){
+            }).on('error', function(err){
                 mongoose.disconnect();
                 reject(err)
             })
