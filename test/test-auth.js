@@ -42,34 +42,6 @@ describe('Auth endpoints', function() {
         return Seller.remove({});
     });
 
-    describe('api/auth/login', function() {
-        it('should reject requests with no credentials', function() {
-            return chai.request(app).post('api/auth/login').then((res) => {
-                expect(res).to.have.status(404);
-            }).catch(err => {
-                throw err;
-            });
-        });
-
-        it('should reject requests with incorrect userName', function() {
-            return chai.request(app).post('api/auth/login').send({userName:'wrongUserName', password}).then((res) => {
-                expect(res).to.have.status(404);
-            }).catch(err => {
-                throw err;
-                
-            });
-        });
-
-        it('should reject requests with incorrect password', function() {
-            return chai.request(app).post('api/auth/login').send({userName, password: 'wrongPassword'}).then((res) => {
-                expect(res).to.have.status(404);
-            }).catch(err => {
-                throw err;
-                
-            });
-        });
-    });
-
     describe('/api/auth/refresh', function() {
         it('should reject requests with no credentials', function() {
             return chai.request(app).post('/api/auth/refresh').then((res) => {
