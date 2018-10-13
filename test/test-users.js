@@ -42,20 +42,28 @@ describe('API test for registration', function() {
                 return chai.request(app).post('/api/users/register').send({
                     password, 
                     firstName, 
-                    lastName
-                }).then(() => {
-                    console.log('Expect fail was here')
-                    expect.fail(null, null, 'Request should not succeed')
-                }).catch(err => {
-                    if (err instanceof chai.AssertionError) {
-                        throw err;
-                    }
-                    const res = err.response;
+                    lastName,
+                    // userName
+                }).then((res) => {
+                    console.log(res.body);
+                    console.log('Expect fail was here');
+                    expect.fail(null, null, 'Request should not succeed');
+
+                    expect(res).to.have.status(201);
                     expect(res).to.have.status(422);
-                    expect(res.body.reason).to.equal('Validation Error');
-                    expect(res.body.message).to.equal('Missing Field');
-                    expect(res.body.location).to.equal('userName');
-                });
+
+                    expect(res.body.userName).to.equal(undefined);
+
+                // }).catch(err => {
+                //     if (err instanceof chai.AssertionError) {
+                //         throw err;
+                //     }
+                //     const res = err.response;
+                //     expect(res).to.have.status(422);
+                //     expect(res.body.reason).to.equal('Validation Error');
+                //     expect(res.body.message).to.equal('Missing Field');
+                //     expect(res.body.location).to.equal('userName');
+                // });
             });
 
         //     it('should reject users with missing password', function() {

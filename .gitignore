@@ -3,4 +3,5 @@ node_modules/
 
 .npm
 # dotenv environment variable files
-.env 
+.env
+.idea

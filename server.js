@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
 const passport = require('passport');
 const path = require('path');
 const exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
+
 
 const {router: usersRouter} = require('./users')
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
@@ -14,6 +16,11 @@ const apiRouter = require('./routes/apiRouter');
 mongoose.Promise = global.Promise;
 const {DATABASE_URL, PORT} = require('./config')
 const app = express();
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(morgan('common'));
 app.use(express.static('public'));
