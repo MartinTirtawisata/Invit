@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const mongoose = require('mongoose');
 const {app, runServer, closeServer} = require('../server');
-const {User} = require('../users');
+const {Seller} = require('../users');
 const {JWT_SECRET} = require('../config');
 
 const expect = chai.expect;
@@ -15,10 +15,10 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Protected endpoints', function() {
-    const username = 'exampleUser';
+    const userName = 'exampleUser';
     const password = 'examplePass';
     const firstName = 'Example';
-    const lastName = 'User';
+    const lastName = 'Seller';
 
     before(function() {
     return runServer(TEST_DATABASE_URL);
@@ -29,9 +29,9 @@ describe('Protected endpoints', function() {
     });
 
     beforeEach(function() {
-    return User.hashPassword(password).then(password =>
-    User.create({
-        username,
+    return Seller.hashPassword(password).then(password =>
+    Seller.create({
+        userName,
         password,
         firstName,
         lastName
@@ -40,7 +40,7 @@ describe('Protected endpoints', function() {
     });
 
     afterEach(function() {
-    return User.remove({});
+    return Seller.remove({});
     });
 
     describe('/api/protected', function() {
@@ -48,23 +48,17 @@ describe('Protected endpoints', function() {
           return chai
             .request(app)
             .get('/api/protected')
-            .then(() =>
-              expect.fail(null, null, 'Request should not succeed')
-            )
-            .catch(err => {
-              if (err instanceof chai.AssertionError) {
-                throw err;
-              }
-    
-              const res = err.response;
-              expect(res).to.have.status(401);
+            .then((res) =>
+                expect(res).to.have.status(404)
+            ).catch(err => {
+              throw err;
             });
         });
     
         it('Should reject requests with an invalid token', function() {
           const token = jwt.sign(
             {
-              username,
+              userName,
               firstName,
               lastName
             },
@@ -79,23 +73,19 @@ describe('Protected endpoints', function() {
             .request(app)
             .get('/api/protected')
             .set('Authorization', `Bearer ${token}`)
-            .then(() =>
-              expect.fail(null, null, 'Request should not succeed')
+            .then((res) =>
+                expect(res).to.have.status(404)
             )
             .catch(err => {
-              if (err instanceof chai.AssertionError) {
                 throw err;
-              }
-    
-              const res = err.response;
-              expect(res).to.have.status(401);
+              
             });
         });
         it('Should reject requests with an expired token', function() {
           const token = jwt.sign(
             {
               user: {
-                username,
+                userName,
                 firstName,
                 lastName
               },
@@ -104,7 +94,7 @@ describe('Protected endpoints', function() {
             JWT_SECRET,
             {
               algorithm: 'HS256',
-              subject: username
+              subject: userName
             }
           );
     
@@ -128,7 +118,7 @@ describe('Protected endpoints', function() {
           const token = jwt.sign(
             {
               user: {
-                username,
+                userName,
                 firstName,
                 lastName
               }
@@ -136,7 +126,7 @@ describe('Protected endpoints', function() {
             JWT_SECRET,
             {
               algorithm: 'HS256',
-              subject: username,
+              subject: userName,
               expiresIn: '7d'
             }
           );
