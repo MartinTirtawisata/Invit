@@ -22,7 +22,7 @@ function registerUserAjax(seller){
         url: USER_URL,
         data: JSON.stringify(seller),
         success: function(data){
-            window.location.assign('http://localhost:8080/user')
+            window.location.assign(window.location.hostname + '/user')
         },
         dataType: 'json',
         contentType: 'application/json'
@@ -49,7 +49,7 @@ function authenticateUserAjax(user){
         url: AUTH_URL,
         data: JSON.stringify(user),
         success: function(data) {
-            window.location.assign('http://localhost:8080/user')
+            window.location.assign(window.location.hostname + '/user')
         },
         dataType: 'json',
         contentType: 'application/json'
