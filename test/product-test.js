@@ -91,7 +91,7 @@ describe("Testing Seller and Product API resource", function(){
 
     describe('POST endpoint for products', function(){
         it('should create a new product', function(){
-            return Seller.find().then(seller => {
+            Seller.find().then(seller => {
                 let seller_id = seller[0]._id;
                 let newProduct = {
                     seller: seller_id,

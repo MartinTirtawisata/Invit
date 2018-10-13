@@ -1,5 +1,4 @@
 'use strict';
-global.TEST_DATABASE_URL = "mongodb://localhost/test-e-commerce-node-app";
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -9,6 +8,9 @@ const mongoose = require('mongoose');
 const {app, runServer, closeServer} = require('../server');
 const {Seller} = require('../users');
 const {JWT_SECRET} = require('../config');
+const {TEST_DATABASE_URL} = require('../config');
+
+const jwtSecret = JWT_SECRET || "SOME_SECRET_STRING"
 
 const expect = chai.expect;
 
@@ -49,7 +51,7 @@ describe('Protected endpoints', function() {
             .request(app)
             .get('/api/protected')
             .then((res) =>
-                expect(res).to.have.status(404)
+                expect(res).to.have.status(401)
             ).catch(err => {
               throw err;
             });
@@ -74,7 +76,7 @@ describe('Protected endpoints', function() {
             .get('/api/protected')
             .set('Authorization', `Bearer ${token}`)
             .then((res) =>
-                expect(res).to.have.status(404)
+                expect(res).to.have.status(401)
             )
             .catch(err => {
                 throw err;
@@ -89,9 +91,9 @@ describe('Protected endpoints', function() {
                 firstName,
                 lastName
               },
-              exp: Math.floor(Date.now() / 1000) - 10 // Expired ten seconds ago
+              exp: Math.floor(Date.now() / 1000) - 10 
             },
-            JWT_SECRET,
+            jwtSecret,
             {
               algorithm: 'HS256',
               subject: userName
@@ -102,16 +104,11 @@ describe('Protected endpoints', function() {
             .request(app)
             .get('/api/protected')
             .set('authorization', `Bearer ${token}`)
-            .then(() =>
-              expect.fail(null, null, 'Request should not succeed')
+            .then((res) =>
+                expect(res).to.have.status(401)
             )
             .catch(err => {
-              if (err instanceof chai.AssertionError) {
                 throw err;
-              }
-    
-              const res = err.response;
-              expect(res).to.have.status(401);
             });
         });
         it('Should send protected data', function() {
@@ -123,7 +120,7 @@ describe('Protected endpoints', function() {
                 lastName
               }
             },
-            JWT_SECRET,
+            jwtSecret,
             {
               algorithm: 'HS256',
               subject: userName,

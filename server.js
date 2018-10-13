@@ -17,6 +17,8 @@ mongoose.Promise = global.Promise;
 const {DATABASE_URL, PORT} = require('./config')
 const app = express();
 
+var bodyParser = require('body-parser');
+
 // app.use(jsonParser);
 
 app.use(morgan('common'));
@@ -33,15 +35,20 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
 passport.use(localStrategy);
 passport.use(jwtStrategy);
-// const jwtAuth = passport.authenticate('jwt', {session: false});
+const jwtAuth = passport.authenticate('jwt', {session: false});
 
-// app.get('/api/anything', jwtAuth, (req, res) => {
-//     return res.json({
-//         data: 'rosebud'
-//     });
-// });  
+app.get('/api/protected', jwtAuth, (req, res) => {
+    return res.json({
+        data: 'rosebud'
+    });
+});  
 
 //HTML URL
 app.set('views', path.join(__dirname, 'views'));
@@ -53,10 +60,6 @@ app.get('/index', function(req, res){
 })
 
 app.get('/login', function(req, res){
-    res.render('login');
- })
-
- app.get('/login', function(req, res){
     res.render('login');
  })
 
