@@ -1,5 +1,5 @@
 # NodE-Commerce
-NodE-Commerce is an e-commerce app that allows the user to sell items online. The user will be able to add, edit, and delete the items in their listing. The user will be able to register themselves to be authenticated as a seller or they can simply browse the store without the need to register.
+NodE-Commerce is an e-commerce app that allows the user to sell items online. The user will be able to add, edit, and delete the items in their listing. The user will be able to register themselves to be authenticated as a seller
 
 ## Demo
 https://pure-earth-57522.herokuapp.com/
