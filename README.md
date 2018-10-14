@@ -2,7 +2,7 @@
 NodE-Commerce is an e-commerce app that allows the user to sell items online. The user will be able to add, edit, and delete the items in their listing. The user will be able to register themselves to be authenticated as a seller or they can simply browse the store without the need to register.
 
 ## Demo
-Heroku
+https://pure-earth-57522.herokuapp.com/
 
 ## Limitations
 There are a few functionality from the app that I had to cut from the project scope due to the lack of time available. It will be implemented further overtime.
@@ -19,7 +19,7 @@ There are a few functionality from the app that I had to cut from the project sc
 ![](png/login.png)
  
 ## Technology
-HTML/CSS/JavaScript/jQuery/NodeJs/Express/MongoDB/Mongoose/PassportJs/TravisCI/Heroku/Mocha & Chai
+HTML/CSS/JavaScript/jQuery/NodeJS/Express/MongoDB/mLAB/Mongoose/PassportJS/JWT/TravisCI/Heroku/Mocha & Chai
 
 ## Authors
 Martin Tirtawisata
