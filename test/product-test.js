@@ -8,12 +8,12 @@ const expect = chai.expect;
 
 const {TEST_DATABASE_URL} = require('../config')
 
-const {Product, Seller} = require('../models')
+const {Product, User} = require('../models')
 const {app, runServer, closeServer} = require('../server');
 
 chai.use(chaiHttp);
 
-function generateSellerData(){
+function generateUserData(){
     return {
         userName: faker.lorem.word(),
         password: faker.lorem.word(),
@@ -22,19 +22,19 @@ function generateSellerData(){
     }
 }
 
-//2) Seeding the seller data from the generated seller data
-function seedSellerData(){
-    console.log('seeding seller data')
-    let sellerDataSeed = [];
+//2) Seeding the user data from the generated user data
+function seedUserData(){
+    console.log('seeding user data')
+    let userDataSeed = [];
     for (let i=0; i<10; i++){
-        sellerDataSeed.push(generateSellerData())
+        userDataSeed.push(generateUserData())
     }
-    return Seller.insertMany(sellerDataSeed);
+    return User.insertMany(userDataSeed);
 }
 
-function generateProductData(seller_id){
+function generateProductData(user_id){
     return {
-        seller: seller_id,
+        user: user_id,
         product_name: faker.lorem.words(),
         product_desc: faker.lorem.sentence(),
         price: faker.random.number(),
@@ -55,13 +55,13 @@ function tearDownDB(){
     return mongoose.connection.dropDatabase();
 }
 
-describe("Testing Seller and Product API resource", function(){
+describe("Testing User and Product API resource", function(){
     before(function(){
         return runServer(TEST_DATABASE_URL);
     });
 
     beforeEach(function(){    
-        return seedSellerData().then(() => {
+        return seedUserData().then(() => {
             return seedProductData();
         })
     });
@@ -91,10 +91,10 @@ describe("Testing Seller and Product API resource", function(){
 
     describe('POST endpoint for products', function(){
         it('should create a new product', function(){
-            Seller.find().then(seller => {
-                let seller_id = seller[0]._id;
+            User.find().then(user => {
+                let user_id = user[0]._id;
                 let newProduct = {
-                    seller: seller_id,
+                    user: user_id,
                     product_name: "ExampleProduct",
                     product_desc: "ExampleDesc",
                     price: 1234,
@@ -103,14 +103,14 @@ describe("Testing Seller and Product API resource", function(){
                     expect(res).to.have.status(200)
                     expect(res).to.be.json;
                     expect(res).to.be.a('object');
-                    expect(res.body).to.include.keys(['seller','product_name','product_desc','price']);
+                    expect(res.body).to.include.keys(['user','product_name','product_desc','price']);
                     expect(res.body.product_name).to.equal(newProduct.product_name);
                     expect(res.body.product_desc).to.equal(newProduct.product_desc);
                     expect(res.body.price).to.equal(newProduct.price);
                     expect(res.body.id).to.not.be.null;
                     return Product.findById(res.body._id)
                 }).then(product => {
-                    expect(product.seller).to.equal(newProduct.seller)
+                    expect(product.user).to.equal(newProduct.user)
                     expect(product.product_name).to.equal(newProduct.product_name);
                     expect(product.product_desc).to.equal(newProduct.product_desc);
                     expect(product.price).to.equal(newProduct.price);

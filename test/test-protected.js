@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const mongoose = require('mongoose');
 const {app, runServer, closeServer} = require('../server');
-const {Seller} = require('../users');
+const {User} = require('../users');
 const {JWT_SECRET} = require('../config');
 const {TEST_DATABASE_URL} = require('../config');
 
@@ -20,7 +20,7 @@ describe('Protected endpoints', function() {
     const userName = 'exampleUser';
     const password = 'examplePass';
     const firstName = 'Example';
-    const lastName = 'Seller';
+    const lastName = 'User';
 
     before(function() {
     return runServer(TEST_DATABASE_URL);
@@ -31,8 +31,8 @@ describe('Protected endpoints', function() {
     });
 
     beforeEach(function() {
-    return Seller.hashPassword(password).then(password =>
-    Seller.create({
+    return User.hashPassword(password).then(password =>
+    User.create({
         userName,
         password,
         firstName,
@@ -42,7 +42,7 @@ describe('Protected endpoints', function() {
     });
 
     afterEach(function() {
-    return Seller.remove({});
+    return User.remove({});
     });
 
     describe('/api/protected', function() {

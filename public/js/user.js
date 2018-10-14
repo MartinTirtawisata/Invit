@@ -1,6 +1,6 @@
 'use strict';
 const PRODUCT_URL = '/api/products'
-const SELLER_URL = '/api/sellers'
+const USER_URL = '/api/users'
 
 // GET Product
 function getAndDisplayProductList(){
@@ -22,18 +22,18 @@ function getAndDisplayProductList(){
     })    
 }
 //-----
-//GET Seller
-function getAndDisplaySeller(){
-    $.getJSON(SELLER_URL, function(seller_data) {
-        seller_data.map(s => {
-            $('.js-seller-name').html(`${s.firstName} ${s.lastName}`)
-            $('.js-seller-username').html(`${s.userName}`)
+//GET User
+function getAndDisplayUser(){
+    $.getJSON(USER_URL, function(user_data) {
+        user_data.map(s => {
+            $('.js-user-name').html(`${s.firstName} ${s.lastName}`)
+            $('.js-user-username').html(`${s.userName}`)
         });
     });
 };
 
 $(getAndDisplayProductList());
-$(getAndDisplaySeller());
+$(getAndDisplayUser());
 
 // -----
 // POST Product
@@ -61,16 +61,16 @@ function addProducts(product){
     });
 }
 
-function handleAddProduct(seller_id){
+function handleAddProduct(user_id){
     $('.js-add-product-form').submit(function(e){
         e.preventDefault();   
         addProducts({
-            seller: seller_id,
+            user: user_id,
             product_name: $('.js-add-product-form').find('#productName').val(),
             product_desc: $('.js-add-product-form').find('#productDesc').val(),
             price: $('.js-add-product-form').find('#productPrice').val()
         });
-        console.log(seller_id)
+        console.log(user_id)
         console.log($('.js-add-product-form').find('#productName').val())
         console.log($('.js-add-product-form').find('#productDesc').val())
         console.log($('.js-add-product-form').find('#productPrice').val()) 
@@ -87,9 +87,9 @@ function handleAddProduct(seller_id){
     })
 }
 
-$.getJSON(SELLER_URL, function(seller_data){
-    let seller_id = seller_data[0]._id
-    $(handleAddProduct(seller_id))
+$.getJSON(USER_URL, function(user_data){
+    let user_id = user_data[0]._id
+    $(handleAddProduct(user_id))
 });
 
 

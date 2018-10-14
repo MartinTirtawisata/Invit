@@ -7,7 +7,7 @@ const {TEST_DATABASE_URL} = require('../config');
 
 const mongoose = require('mongoose');
 const { app, runServer, closeServer } = require('../server');
-const {Seller} = require('../users');
+const {User} = require('../users');
 const { JWT_SECRET } = require('../config');
 
 const jwtSecret = JWT_SECRET || "SOME_SECRET_STRING"
@@ -31,15 +31,15 @@ describe('Auth endpoints', function() {
     });
 
     beforeEach(function() {
-        return Seller.hashPassword(password).then(password => {
-            Seller.create({
+        return User.hashPassword(password).then(password => {
+            User.create({
                 userName, password, firstName,lastName
             })
         });
     });
     
     afterEach(function() {
-        return Seller.remove({});
+        return User.remove({});
     });
 
     describe('/api/auth/refresh', function() {

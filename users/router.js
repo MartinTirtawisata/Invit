@@ -3,12 +3,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const {Seller} = require('../models')
+const {User} = require('../models')
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
-//POST seller - registration    
+//POST user - registration    
 router.post('/register', jsonParser, (req, res) => {
     // console.log(req.body)
     // Checking for the required fields in the keys
@@ -79,7 +79,7 @@ router.post('/register', jsonParser, (req, res) => {
     lastName = lastName.trim();
     
     //Check for unique userName
-    return Seller.find({userName}).count().then(count => {
+    return User.find({userName}).count().then(count => {
         if (count > 0){
             // Existing username exist
             return Promise.reject({
@@ -90,10 +90,10 @@ router.post('/register', jsonParser, (req, res) => {
             });
         }
         // If no existing username exist, hash password
-        return Seller.hashPassword(password);
+        return User.hashPassword(password);
     }).then(hash => {
         console.log('Hashing password')
-        return Seller.create({
+        return User.create({
             userName,
             password: hash,
             firstName,

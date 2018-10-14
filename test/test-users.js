@@ -4,7 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 
 const { app, runServer, closeServer } = require('../server');
-const {Seller} = require('../users');
+const {User} = require('../users');
 const {TEST_DATABASE_URL} = require('../config');
 
 const expect = chai.expect;
@@ -32,7 +32,7 @@ describe('api/user/register', function() {
     beforeEach(function() {});
     
     afterEach(function() {
-        return Seller.remove({});
+        return User.remove({});
     });
 
     describe('/api/users/register', function() {
@@ -167,7 +167,7 @@ describe('api/user/register', function() {
             });
 
             it('should reject users with duplicate username', function() {
-                return Seller.create({
+                return User.create({
                     userName,
                     password, 
                     firstName, 
@@ -211,7 +211,7 @@ describe('api/user/register', function() {
                     expect(res.body.userName).to.equal(userName);
                     expect(res.body.firstName).to.equal(firstName);
                     expect(res.body.lastName).to.equal(lastName);
-                    return Seller.findOne({
+                    return User.findOne({
                         userName
                     });
                 }).then(user => {
@@ -244,7 +244,7 @@ describe('api/user/register', function() {
                     expect(res.body.userName).to.equal(userName);
                     expect(res.body.firstName).to.equal(firstName);
                     expect(res.body.lastName).to.equal(lastName);
-                    return Seller.findOne({
+                    return User.findOne({
                         userName
                     });
                 }).then(user => {

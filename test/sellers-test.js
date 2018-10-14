@@ -8,13 +8,13 @@ const expect = chai.expect;
 
 const {TEST_DATABASE_URL} = require('../config')
 
-const {Product, Seller} = require('../models')
+const {Product, User} = require('../models')
 const {app, runServer, closeServer} = require('../server');
 
 chai.use(chaiHttp);
 
 //1) Generate the seed data using faker
-function generateSellerData(){
+function generateUserData(){
     return {
         userName: faker.lorem.word(),
         password: faker.lorem.word(),
@@ -23,14 +23,14 @@ function generateSellerData(){
     }
 }
 
-//2) Seeding the seller data from the generated seller data
-function seedSellerData(){
-    console.log('seeding seller data')
-    let sellerDataSeed = [];
+//2) Seeding the user data from the generated user data
+function seedUserData(){
+    console.log('seeding user data')
+    let userDataSeed = [];
     for (let i=0; i<10; i++){
-        sellerDataSeed.push(generateSellerData())
+        userDataSeed.push(generateUserData())
     }
-    return Seller.insertMany(sellerDataSeed);
+    return User.insertMany(userDataSeed);
 }
 
 function tearDownDB(){
@@ -38,13 +38,13 @@ function tearDownDB(){
     return mongoose.connection.dropDatabase();
 }
 
-describe("Testing Seller and Product API resource", function(){
+describe("Testing User and Product API resource", function(){
     before(function(){
         return runServer(TEST_DATABASE_URL);
     });
 
     beforeEach(function(){
-        return seedSellerData()
+        return seedUserData()
     });
 
     afterEach(function(){
@@ -58,15 +58,15 @@ describe("Testing Seller and Product API resource", function(){
     describe('GET endpoints for user', function(){
         it('should retrieve user information', function(){
             let res;
-            return chai.request(app).get('/api/sellers').then(_res => {
+            return chai.request(app).get('/api/users').then(_res => {
                 res = _res
                 expect(res).to.have.status(200);
                 expect(res).to.be.json;
                 expect(res.body).to.have.lengthOf.at.least(1);
-                return Seller.countDocuments();
-            }).then(function(sellerCount) {
+                return User.countDocuments();
+            }).then(function(userCount) {
                 // Checks database for correct length
-                expect(res.body).to.have.lengthOf(sellerCount)
+                expect(res.body).to.have.lengthOf(userCount)
             });
         });
     });

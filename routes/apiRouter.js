@@ -4,22 +4,22 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const {Product, Seller} = require('../models')
+const {Product, User} = require('../models')
 
-//GET all sellers
-router.get('/sellers', jsonParser, (req, res) => {
-    Seller.find().then(sellers => {
-        res.json(sellers);
+//GET all users
+router.get('/users', jsonParser, (req, res) => {
+    User.find().then(user => {
+        res.json(user);
     }).catch(onRejected => {
         console.error(onRejected);
         res.status(400).json({message: "something bad happened"})
     });
 });
 
-//GET seller by id
-router.get('/sellers/:id',jsonParser, (req, res) => {
-    Seller.findOne({_id: req.params.id}).then(seller => {
-        res.json(seller);
+//GET user by id
+router.get('/users/:id',jsonParser, (req, res) => {
+    User.findOne({_id: req.params.id}).then(user => {
+        res.json(user);
     }).catch(onRejected => {
         console.error(onRejected);
         res.status(400).json({message: "something bad happened"})
@@ -29,7 +29,6 @@ router.get('/sellers/:id',jsonParser, (req, res) => {
 //API endpoint for products --
 // GET all products
 router.get('/products', jsonParser, (req, res) => {
-    // add product.find({seller:sellerID})
     Product.find().then(products => {
         res.status(200).json(products)
     }).catch(onRejected => {
@@ -51,7 +50,7 @@ router.get('/products/:id',jsonParser, (req, res) => {
 // POST products
 router.post('/products', jsonParser, (req, res) => {
     //Checking for required fields[keys]
-    const requiredFields = ['seller', 'product_name','product_desc','price']
+    const requiredFields = ['user', 'product_name','product_desc','price']
     requiredFields.forEach(field => {
         if (!(field in req.body)){
             let message = `the ${field} field is missing`
@@ -60,11 +59,11 @@ router.post('/products', jsonParser, (req, res) => {
         }
     })
 
-    Seller.findById(req.body.seller).then(seller => {
-        console.log(seller);
-        if (seller){
+    User.findById(req.body.user).then(user => {
+        console.log(user);
+        if (user){
             Product.create({
-                seller: req.body.seller,
+                user: req.body.user,
                 product_name: req.body.product_name,
                 product_desc: req.body.product_desc,
                 price: req.body.price
@@ -72,7 +71,7 @@ router.post('/products', jsonParser, (req, res) => {
                 res.status(200).json(product);
             })
         } else {
-            let message = `the seller with the id ${req.body.seller} doesn't exist`
+            let message = `the user with the id ${req.body.user} doesn't exist`
             res.status(500).json({error: message});
         }
     }).catch(onRejected => {

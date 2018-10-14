@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-// sellerSchema
-let sellerSchema = mongoose.Schema({
+// userSchema
+let userSchema = mongoose.Schema({
     userName: {
         type: 'string',
         required: true,
@@ -19,7 +19,7 @@ let sellerSchema = mongoose.Schema({
     
 });
 
-sellerSchema.methods.serialize = function() {
+userSchema.methods.serialize = function() {
     return {
         userName: this.userName || '',
         firstName: this.firstName || '',
@@ -27,17 +27,17 @@ sellerSchema.methods.serialize = function() {
     };
 ;}
 
-sellerSchema.methods.validatePassword = function(password){
+userSchema.methods.validatePassword = function(password){
     return bcrypt.compare(password, this.password)
 };
 
-sellerSchema.statics.hashPassword = function(password) {
+userSchema.statics.hashPassword = function(password) {
     return bcrypt.hash(password, 10);
 };
 
 // Product Schema
 let productSchema = mongoose.Schema({
-    seller: {type: mongoose.Schema.Types.ObjectId, ref: 'Seller'},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     product_name: 'string',
     product_desc: 'string',
     price: 'number',
@@ -45,23 +45,23 @@ let productSchema = mongoose.Schema({
 })
 
 productSchema.pre('find', function(next){
-    this.populate('seller');
+    this.populate('user');
     next();
 });
 
 productSchema.pre('findOne', function(next){
-    this.populate('seller');
+    this.populate('user');
     next();
 });
 
-productSchema.virtual('sellerName').get(function(){
-    return `${this.seller.firstName} ${this.seller.lastName}`
+productSchema.virtual('username').get(function(){
+    return `${this.user.firstName} ${this.user.lastName}`
 });
 
 productSchema.methods.serialize = function(){
     return {
         id: this._id,
-        seller: this.sellerName,
+        user: this.username,
         product_name: this.product_name,
         product_desc: this.product_desc,
     };
@@ -69,9 +69,9 @@ productSchema.methods.serialize = function(){
 
 
 
-const Seller = mongoose.model('Seller', sellerSchema);
+const User = mongoose.model('User', userSchema);
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = {Seller, Product}
+module.exports = {User, Product}
 
 

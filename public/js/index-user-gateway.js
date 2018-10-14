@@ -16,11 +16,11 @@ function handleUserRegistration(){
     })
 }
 
-function registerUserAjax(seller){
+function registerUserAjax(user){
     $.ajax({
         method: 'POST',
         url: USER_URL,
-        data: JSON.stringify(seller),
+        data: JSON.stringify(user),
         success: function(data){
             window.location.assign('/user')
         },
