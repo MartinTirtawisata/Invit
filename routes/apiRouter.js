@@ -60,7 +60,6 @@ router.post('/products', jsonParser, (req, res) => {
     })
 
     User.findById(req.body.user).then(user => {
-        console.log(user);
         if (user){
             Product.create({
                 user: req.body.user,

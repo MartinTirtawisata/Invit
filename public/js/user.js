@@ -128,7 +128,6 @@ function handleProductUpdate(){
 };
 
 function updateProductData(product){
-    console.log(JSON.stringify(product))
     $.ajax({
         method: 'PUT',
         url: PRODUCT_URL + "/" + product._id,
