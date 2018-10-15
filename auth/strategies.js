@@ -6,7 +6,7 @@ const {User} = require('../models');
 const {JWT_SECRET} = require('../config');
 
 const localStrategy = new LocalStrategy({
-    // usernameField = req.body.userName
+    // usernameField is equal to req.body.userName
     usernameField: 'userName',
     passwordField: 'password'
 }, (username, password, callback) => {
@@ -36,6 +36,7 @@ const localStrategy = new LocalStrategy({
         return callback(err, false);
     });
 });
+
 let jwtSecret = JWT_SECRET || "SOME_SECRET_STRING"
 const jwtStrategy = new JwtStrategy(
     {

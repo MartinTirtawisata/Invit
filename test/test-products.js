@@ -22,7 +22,6 @@ function generateUserData(){
     }
 }
 
-//2) Seeding the user data from the generated user data
 function seedUserData(){
     console.log('seeding user data')
     let userDataSeed = [];
@@ -115,11 +114,11 @@ describe("Testing User and Product API resource", function(){
                     expect(product.product_desc).to.equal(newProduct.product_desc);
                     expect(product.price).to.equal(newProduct.price);
                 }).catch(err => {
-                    // console.error(err);
+                    console.error(err);
                     res.status(400).json({err})
                 });
             }).catch(err => {
-                // console.error(err);
+                console.error(err);
                 res.status(400);
             })
         });
@@ -127,11 +126,11 @@ describe("Testing User and Product API resource", function(){
 
     describe('PUT endpoint for products', function(){
         it('should update an existing product data', function(){
-
             let updateProduct = {
                 product_name: 'iPhone XS MAX',
                 price: 15
-            }
+            };
+
             Product.findOne().then(product => {
                 updateProduct.id = product._id
                 return chai.request(app).put(`/api/products`).send(updateProduct).then(res => {

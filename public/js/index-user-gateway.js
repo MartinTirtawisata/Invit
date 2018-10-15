@@ -3,7 +3,7 @@
 const USER_URL = '/api/users/register'
 const AUTH_URL = '/api/auth/login';
 
-// User registration
+// User registration handler
 function handleUserRegistration(){
     $('.sign-up-form').submit(function(e){
         e.preventDefault();
@@ -31,7 +31,7 @@ function registerUserAjax(user){
 
 $(handleUserRegistration());
 
-// User Authentication for login
+// User Login Authentication Handle
 function handleUserAuthentication(){
     $('.js-authentication-form').submit(function(event) {
         event.preventDefault();

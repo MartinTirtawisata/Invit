@@ -10,14 +10,12 @@ const jsonParser = bodyParser.json();
 
 //POST user - registration    
 router.post('/register', jsonParser, (req, res) => {
-    // console.log(req.body)
-    // Checking for the required fields in the keys
+    
     const requiredFields = ['userName','password']
     const missingField = requiredFields.find(field => !(field in req.body));
     
     // Check for missing field
     if (missingField) {
-        // console.log('I was here MISSINGFIELD ' + missingField)
         return res.status(422).json({
             code: 422,
             reason: 'ValidationError',

@@ -27,6 +27,7 @@ router.get('/users/:id',jsonParser, (req, res) => {
 });
 
 //API endpoint for products --
+
 // GET all products
 router.get('/products', jsonParser, (req, res) => {
     Product.find().then(products => {
@@ -49,7 +50,6 @@ router.get('/products/:id',jsonParser, (req, res) => {
 
 // POST products
 router.post('/products', jsonParser, (req, res) => {
-    //Checking for required fields[keys]
     const requiredFields = ['user', 'product_name','product_desc','price']
     requiredFields.forEach(field => {
         if (!(field in req.body)){

@@ -2,7 +2,7 @@
 const PRODUCT_URL = '/api/products'
 const USER_URL = '/api/users'
 
-// GET Product
+// Display Products
 function getAndDisplayProductList(){
     $.getJSON(PRODUCT_URL, function(product_data){
         let productData = product_data.map((d, index) => {
@@ -22,7 +22,7 @@ function getAndDisplayProductList(){
     })    
 }
 //-----
-//GET User
+//Display username
 function getAndDisplayUser(){
     $.getJSON(USER_URL, function(user_data) {
         user_data.map(s => {
@@ -36,7 +36,7 @@ $(getAndDisplayProductList());
 $(getAndDisplayUser());
 
 // -----
-// POST Product
+// Creating new products
 
 $('#add-modal-btn').on('click', function(){
     $('#add-product-modal').css('display','block');
@@ -69,16 +69,7 @@ function handleAddProduct(user_id){
             product_name: $('.js-add-product-form').find('#productName').val(),
             product_desc: $('.js-add-product-form').find('#productDesc').val(),
             price: $('.js-add-product-form').find('#productPrice').val()
-        });
-        console.log(user_id)
-        console.log($('.js-add-product-form').find('#productName').val())
-        console.log($('.js-add-product-form').find('#productDesc').val())
-        console.log($('.js-add-product-form').find('#productPrice').val()) 
-        
-        
-        
-        
-        
+        });  
         $(e.currentTarget).find('#productName').val('')
         $(e.currentTarget).find('#productDesc').val('')
         $(e.currentTarget).find('#productPrice').val('')
@@ -91,13 +82,8 @@ $.getJSON(USER_URL, function(user_data){
     let user_id = user_data[0]._id
     $(handleAddProduct(user_id))
 });
-
-
-
-
-
 // -----
-// UPDATE Product
+// Update Products
 
 $('.js-product-table').on('click','.js-edit-btn', function(){
     $('#update-product-modal').css('display','block');
@@ -115,27 +101,19 @@ $('.js-update-product-form').submit(function(e) {
     $('#add-product-modal').prop('hidden','true');
 })
 
-//Issue - Calls handleProductUpdate everytime when clicking
 function getProductId(){
     $('.js-product-table-body').on('click', '.js-edit-btn', function(e){
         e.preventDefault();
-        console.log($(e.currentTarget))
-        console.log($(e.currentTarget).closest('tr').attr('id'));
-        console.log($(e.currentTarget).closest('tr').find('td.product-name').text());
-        console.log($(e.currentTarget).closest('tr').find('td.product-desc').text());
-        console.log($(e.currentTarget).closest('tr').find('span.product-price').text());
-
         let productID = $(e.currentTarget).closest('tr').attr('id')
         let productName = $(e.currentTarget).closest('tr').find('td.product-name').text();
         let productDesc = $(e.currentTarget).closest('tr').find('td.product-desc').text();
         let productPrice = $(e.currentTarget).closest('tr').find('span.product-price').text();
-
         $('.product-id').text(`${productID}`);
         $('#update-product-name').val(productName);
         $('#update-product-desc').val(productDesc); 
         $('#update-product-price').val(productPrice);
-    })
-}
+    });
+};
 
 function handleProductUpdate(){
     $('.js-update-product-form').submit(function(e){
@@ -147,7 +125,7 @@ function handleProductUpdate(){
             price: $(e.currentTarget).find('#update-product-price').val()
         });
     });
-}
+};
 
 function updateProductData(product){
     console.log(JSON.stringify(product))
@@ -158,8 +136,8 @@ function updateProductData(product){
         success: getAndDisplayProductList,
         dataType: 'json',
         contentType: 'application/json'
-    })
-}
+    });
+};
 
 $(getProductId());
 $(handleProductUpdate());
@@ -177,14 +155,10 @@ function deleteOneProduct(productID){
 
 $('.js-product-table').on('click', '.js-dlt-btn', function(event){
     event.preventDefault();
-    // add javascript pop up if yes
     deleteOneProduct($(event.currentTarget).closest('.js-product-data').attr('id'));
 })
 
-
-
-
-// Filter Product Name
+// Search filter
 $('#search').on('keyup', function(){
     let value = $(this).val().toLowerCase();
     $('#product-table-body tr').filter(function() {

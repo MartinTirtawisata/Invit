@@ -8,12 +8,11 @@ const expect = chai.expect;
 
 const {TEST_DATABASE_URL} = require('../config')
 
-const {Product, User} = require('../models')
+const {User} = require('../models')
 const {app, runServer, closeServer} = require('../server');
 
 chai.use(chaiHttp);
 
-//1) Generate the seed data using faker
 function generateUserData(){
     return {
         userName: faker.lorem.word(),
@@ -23,7 +22,6 @@ function generateUserData(){
     }
 }
 
-//2) Seeding the user data from the generated user data
 function seedUserData(){
     console.log('seeding user data')
     let userDataSeed = [];
@@ -65,7 +63,6 @@ describe("Testing User and Product API resource", function(){
                 expect(res.body).to.have.lengthOf.at.least(1);
                 return User.countDocuments();
             }).then(function(userCount) {
-                // Checks database for correct length
                 expect(res.body).to.have.lengthOf(userCount)
             });
         });
