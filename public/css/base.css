@@ -8,7 +8,6 @@
     position: fixed;
     width: 100%;
     padding: 1px;
-    /* background-color:rgba(34, 47, 62, 0.1); */
     height: 50px;
     max-height: 50px;
     top: 0;
@@ -35,4 +34,13 @@
     display: block;
     text-decoration: none;
 }
+
+.top-nav a:hover{
+    color: lightgrey;
+    display: block;
+    text-decoration: none;
+
+}
 /* End Nav Bar */
+
+

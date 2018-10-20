@@ -4,19 +4,45 @@ body {
     font-family: 'Muli', sans-serif;
 }
 
+main {
+    padding-bottom: 25%;
+}
+
 h1 {
-    color:#6F9999; 
+    color: rgb(68, 0, 238, 0.6);
+    font-size: 50px;
+}
+
+h2 {
+    color: rgb(68, 0, 238, 0.6);
+    font-size: 40px;
+}
+
+h3 {
+    color: rgb(68, 0, 238, 0.6);
+    font-size: 28px;
+}
+
+.desc-content {
+    margin-top: 150px;
+}
+
+.desc {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .title {
     text-align: center;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .user-form {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15%;
 }
 /* Form */
 .sign-up-form{
@@ -25,7 +51,7 @@ h1 {
     border-radius: 25px;
     background-color: #fff; 
     padding: 15px 15px;
-    color: rgb(68, 0, 238, 0.6);
+    color: rgb(68, 0, 238, 0.8);
     box-shadow: 0px 0px 25px 1px;
 }
 
@@ -44,6 +70,7 @@ fieldset input {
     border-radius: 5px;
     color: lightgray;
     height: 45px;
+    padding: 5px;
 }
 
 fieldset {
@@ -63,19 +90,30 @@ fieldset {
     border: none;
     border-radius: 5px;
     font-size: 20px;
-    background-color:#40E859; 
+    background-color: rgb(68, 0, 238, 0.8);
     color: white;
     font-weight: bold;
 }
 
 .button:hover {
-    background-color:#53FF9D; 
-    box-shadow: 2px 2px 4px;
+    background-color: rgb(68, 0, 238, 0.5);
+    box-shadow: 0px 0px 5px 2px;
     cursor: pointer;
 }
 
 .button:active {
-    background-color:#40E859; 
+    background-color: rgb(68, 0, 238, 0.8);
+    box-shadow: none;
 }
 
 /* End Form */
+
+img {
+    width: 100%;
+}
+
+.sub-desc {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
