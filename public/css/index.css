@@ -1,5 +1,11 @@
+body {
+    background-image: linear-gradient(to bottom right, #40E859, #53FF9D, rgb(218, 212, 212));
+    background-repeat: no-repeat;
+    font-family: 'Muli', sans-serif;
+}
+
 h1 {
-    color:rgba(33, 165, 177,1.0); 
+    color:#6F9999; 
 }
 
 .title {
@@ -8,7 +14,7 @@ h1 {
 }
 
 .user-form {
-    max-width: 500px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -16,11 +22,11 @@ h1 {
 .sign-up-form{
     width: 100%;
     margin-top: 10px;
-    border-radius: 10px;
-    background-color:rgba(33, 165, 177,1.0); 
-    padding: 15px 30px;
-    color: rgb(253, 253, 253);
-    font-weight: bold;
+    border-radius: 25px;
+    background-color: #fff; 
+    padding: 15px 15px;
+    color: rgb(68, 0, 238, 0.6);
+    box-shadow: 0px 0px 25px 1px;
 }
 
 legend {
@@ -35,6 +41,9 @@ fieldset input {
     font-size: 16px;
     margin-top: 5px;
     margin-bottom: 15px;
+    border-radius: 5px;
+    color: lightgray;
+    height: 45px;
 }
 
 fieldset {
@@ -50,23 +59,23 @@ fieldset {
 
 .button {
     width: 100%;
-    height: 35px;
+    height: 45px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    background-color:rgb(5, 226, 255, 0.8); 
+    font-size: 20px;
+    background-color:#40E859; 
     color: white;
     font-weight: bold;
 }
 
 .button:hover {
-    background-color:rgb(5, 226, 255, 0.4); 
+    background-color:#53FF9D; 
     box-shadow: 2px 2px 4px;
     cursor: pointer;
 }
 
 .button:active {
-    background-color:rgb(5, 226, 255, 0.8); 
+    background-color:#40E859; 
 }
 
 /* End Form */
