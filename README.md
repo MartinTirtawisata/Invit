@@ -12,10 +12,11 @@ There are a few functionality from the app that I had to cut from the project sc
 5) Items and products needs to be assigned to the appropriate user who created them. 
  
 ## Screenshots
-![](png/user.png)
-![](png/register.png)
-![](png/login.png)
+![](png/userpage.png)
+![](png/registerpage.png)
 ![](png/landing.png)
+![](png/loginpage.png)
+
  
 ## Technology
 HTML/CSS/JavaScript/jQuery/NodeJS/Express/MongoDB/mLAB/Mongoose/PassportJS/JWT/TravisCI/Heroku/Mocha & Chai
