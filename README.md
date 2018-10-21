@@ -5,7 +5,7 @@ https://pure-earth-57522.herokuapp.com/
 
 ## Limitations
 There are a few functionality from the app that I had to cut from the project scope due to the lack of time available. It will be implemented further overtime.
-1) Need user feedback when navigating through the website
+1) Need flash feedback when authenticating registration and login
 2) Logged in user needs to be given a session
 3) API access to their account needs to be protected 
 4) User needs to be able to logout
