@@ -23,23 +23,29 @@ function getAndDisplayProductList(){
     });    
 };
 
-$.getJSON(PRODUCT_URL, function(data) {
-    let productData = data.map((d, index) => {
-        console.log(d)
-        for (let i=0; i < index+1; i++) {
-            let price = d.price;
-            console.log(price);
-            let qty = d.product_qty;
-            console.log(qty);
-            let total = price * qty;
-            return total
+function getTotalValue(){
+    $.getJSON(PRODUCT_URL, function(data) {
+        let productData = data.map((d, index) => {
+            for (let i=0; i < index+1; i++) {
+                let price = d.price;
+                let qty = d.product_qty;
+                let total = price * qty;
+                return total
+            }
+        })
+        function totalSum(total, current) {
+            return total + current
+        } 
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-    })
-    function totalSum(total, current) {
-        return total + current
-    } 
-    $('.total-value').text(productData.reduce(totalSum));
-})
+        $('.total-value').text(productData.reduce(totalSum));
+        let val = parseInt($('.total-value').text());
+        val = numberWithCommas(val);
+        $('.total-value').text(val);
+    })  
+}
+
 
 
 //-----
@@ -55,6 +61,7 @@ function getAndDisplayUser(){
 
 $(getAndDisplayProductList());
 $(getAndDisplayUser());
+$(getTotalValue());
 
 // -----
 // Creating new products
@@ -76,6 +83,7 @@ function addProducts(product){
         data: JSON.stringify(product),
         success: function(data) {
             getAndDisplayProductList()
+            getTotalValue()
         },
         dataType: 'json',
         contentType: 'application/json'
@@ -158,7 +166,10 @@ function updateProductData(product){
         method: 'PUT',
         url: PRODUCT_URL + "/" + product._id,
         data: JSON.stringify(product),
-        success: getAndDisplayProductList,
+        success: function(data){
+            getAndDisplayProductList()
+            getTotalValue()   
+        },
         dataType: 'json',
         contentType: 'application/json'
     });
