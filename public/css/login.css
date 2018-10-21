@@ -13,6 +13,9 @@ main {
     margin-left: auto;
     margin-right: auto;
     transition: transform .1s;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .user-form:hover {

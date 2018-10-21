@@ -9,9 +9,6 @@ header {
     margin-top: 5em;
 }
 
-main {
-    /* padding-bottom: 25%; */
-}
 
 .top-navbar {
     background-color: rgba(34, 47, 62, 1.0);
@@ -39,6 +36,9 @@ main {
     background-color: white;
     box-shadow: 0px 0px 5px 1px #F18818;
     transition: transform .1s;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .content-box:hover {
@@ -97,6 +97,9 @@ main {
     border-radius: 10px;
     font-size: 16px;
     transition: transform 0.1;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .add-modal-btn:hover, .add-modal-btn:focus {
@@ -119,12 +122,11 @@ main {
 .update-product-modal{
     display: none;
     max-width: 500px;
-    margin-left: 20px;
 }
 
 .modal-content{
     background-color: white;
-    padding: 25px;
+    padding: 10px;
     width: 100%;
     box-shadow: 4px 4px 20px 1px;
     border-radius: 15px;
@@ -136,6 +138,9 @@ main {
     font-size: 24px;
     color: grey;
     transition: transform 0.1;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .close-btn:hover, .close-btn:focus{
@@ -180,20 +185,25 @@ legend{
     height: 35px;
     padding: 5px;
     border: 0;
-    background-color:rgb(248, 172, 90, 0.6); 
+    background-color:rgb(248, 172, 90, 0.8); 
     border-radius: 5px;
     cursor: pointer;
     color: white;
     font-weight: bold;
     transition: transform 0.1;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .submit-btn:hover {
     transform: scale(1.015);
+    background-color:rgb(248, 172, 90, 1.0)
 }
 
 .submit-btn:active {
     transform: none;
+    background-color:rgb(248, 172, 90, 0.8)
 }
 
 
@@ -224,11 +234,13 @@ tr{
     background-color: white;
     padding: 15px;
     transition: transform 0.1;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 tr:hover {
-    transform: scale(1.05);
-
+    transform: scale(1.015);
 }
 
 
@@ -250,12 +262,18 @@ tr:hover {
     background-color:rgba(33, 165, 177,0.4); 
     font-weight: bold;
     transition: transform 0.1;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .delete-btn{
     background-color: rgba(228, 20, 20, 0.4);
     font-weight: bold;
     transition: transform 0.1;
+    -webkit-transition: transform .1;
+    -moz-transition: transform 0.1;
+    -o-transition: transform 0.1;
 }
 
 .edit-btn:hover {

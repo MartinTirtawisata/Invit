@@ -6,7 +6,6 @@ const USER_URL = '/api/users'
 function getAndDisplayProductList(){
     $.getJSON(PRODUCT_URL, function(product_data){
         let productData = product_data.map((d, index) => {
-            console.log(d)
             return `<tr class="js-product-data" id=${d._id}>
             <td class="product-index">${index + 1}</td>
             <td class="js-product-name product-name">${d.product_name}</td>
