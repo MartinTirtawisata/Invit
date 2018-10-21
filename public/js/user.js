@@ -19,8 +19,10 @@ function getAndDisplayProductList(){
             </tr>`;
         });
         $('.js-product-table-body').html(productData)
-    })    
-}
+    });    
+};
+
+
 //-----
 //Display username
 function getAndDisplayUser(){

@@ -9,7 +9,7 @@ header {
 }
 
 main {
-    padding-bottom: 25%;
+    padding-bottom: 10%;
 }
 
 .top-navbar {
@@ -42,16 +42,6 @@ main {
 
 .content-box:hover {
     transform: scale(1.015);
-}
-
-.revenue {
-    color: darkgreen;
-    font-size: 24px;
-}
-
-.product-qty{
-    color: grey;
-    font-size: 24px;
 }
 
 /* Search Bar */
