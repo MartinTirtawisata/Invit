@@ -6,7 +6,7 @@ const USER_URL = '/api/users'
 function getAndDisplayProductList(){
     $.getJSON(PRODUCT_URL, function(product_data){
         let productData = product_data.map((d, index) => {
-            $('.product-qty').text(index + 1)
+            console.log(d)
             return `<tr class="js-product-data" id=${d._id}>
             <td class="product-index">${index + 1}</td>
             <td class="js-product-name product-name">${d.product_name}</td>
@@ -26,6 +26,7 @@ function getAndDisplayProductList(){
 function getTotalValue(){
     $.getJSON(PRODUCT_URL, function(data) {
         let productData = data.map((d, index) => {
+            $('.product-id-qty').text(index + 1)
             for (let i=0; i < index+1; i++) {
                 let price = d.price;
                 let qty = d.product_qty;
@@ -39,10 +40,17 @@ function getTotalValue(){
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        $('.total-value').text(productData.reduce(totalSum));
-        let val = parseInt($('.total-value').text());
-        val = numberWithCommas(val);
-        $('.total-value').text(val);
+        if(productData.length === 0){
+            $('.product-id-qty').text(0)
+            $('.total-value').text(0);
+        } else {
+            $('.total-value').text(productData.reduce(totalSum));
+            let val = parseInt($('.total-value').text());
+            val = numberWithCommas(val);
+            $('.total-value').text(val);
+        }
+        
+        
     })  
 }
 
@@ -185,7 +193,10 @@ function deleteOneProduct(productID){
     $.ajax({
         url: PRODUCT_URL + "/" + productID,
         method: "DELETE",
-        success: getAndDisplayProductList
+        success: function(data){
+            getAndDisplayProductList()
+            getTotalValue();
+        }
     })
 }
 
