@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-12 product-table">                
             <table class="js-product-table" id="table">
@@ -28,6 +28,7 @@
                         <th>Product Name</th>
                         <th>Product Description</th>
                         <th>Price</th>
+                        <th>Quantity</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -60,8 +61,10 @@
                             
                             <label for="productPrice"><span>Price</span></label>    
                             <input class="input" id="productPrice" type="text" name="productPrice" required>
+
+                            <label for="productQty"><span>Quantity</span></label>    
+                            <input class="input" id="productQty" type="text" name="productQty" required>
                             
-                            </label>
                             <button class="submit-btn" type="submit">Submit</button>
                         </fieldset>
                     </form>
@@ -90,6 +93,10 @@
                             <span>Price</span>
                             <input class="input" id="update-product-price" type="text" name="update-product-price" required>
                         </label>
+                        <label>
+                            <span>Quantity</span>
+                            <input class="input" id="update-product-qty" type="text" name="product-qty" required>
+                        </label>    
                         <button class="submit-btn" type="submit">Submit</button>
                     </fieldset>
                 </form>

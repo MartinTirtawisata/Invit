@@ -1,4 +1,5 @@
-body {
+html {
+    height: 100%;
     background-image: linear-gradient(to bottom right, rgb(12, 232, 102, 0.4), rgb(0, 255, 157, 0.2));
     background-repeat: no-repeat;
 }
@@ -9,7 +10,7 @@ header {
 }
 
 main {
-    padding-bottom: 10%;
+    /* padding-bottom: 25%; */
 }
 
 .top-navbar {
@@ -216,7 +217,7 @@ th, td{
     text-align: center;
     border-bottom: 1px solid rgb(248, 172, 90);
     padding: 10px;
-    width: 20%
+    width: 16.67%;
 }
 
 tr{
@@ -226,7 +227,8 @@ tr{
 }
 
 tr:hover {
-    transform: scale(1.015);
+    transform: scale(1.05);
+
 }
 
 
@@ -280,9 +282,6 @@ tr:hover {
     transform: none;
 }
 
-.dollar-sign {
-    color: rgb(94, 94, 94);
-}
 
 
 
