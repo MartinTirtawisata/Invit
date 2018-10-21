@@ -1,7 +1,6 @@
 body {
-    background-image: linear-gradient(to bottom right, #40E859, #53FF9D, rgb(218, 212, 212));
+    background-image: linear-gradient(to bottom right, rgb(64, 232, 89, 0.7), rgb(83, 255, 157, 0.7), rgb(218, 212, 212));
     background-repeat: no-repeat;
-    font-family: 'Muli', sans-serif;
 }
 
 main {
@@ -28,7 +27,7 @@ h3 {
 }
 
 .desc {
-    color: #fff;
+    color: rgba(34, 47, 62, 0.9);
     font-size: 20px;
     font-weight: bold;
 }
@@ -43,6 +42,11 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15%;
+    transition: transform .1s;
+}
+
+.user-form:hover {
+    transform: scale(1.02)
 }
 /* Form */
 .sign-up-form{
@@ -112,7 +116,7 @@ img {
 }
 
 .sub-desc {
-    color: white;
+    color: rgba(34, 47, 62, 0.9);
     font-size: 20px;
     font-weight: bold;
 }

@@ -1,7 +1,6 @@
 body {
     background-image: linear-gradient(to bottom right, #0CE866, #00FF9D, rgb(241, 241, 241));
     background-repeat: no-repeat;
-    font-family: 'Muli', sans-serif;
 }
 
 main {
@@ -12,8 +11,12 @@ main {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+    transition: transform .1s;
 }
 
+.user-form:hover {
+    transform: scale(1.02)
+}
 /* Form */
 .authentication-form{
     width: 100%;
@@ -49,7 +52,7 @@ fieldset {
 
 button {
     width: 100%;
-    height: 35px;
+    height: 45px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
