@@ -23,6 +23,24 @@ function getAndDisplayProductList(){
     });    
 };
 
+$.getJSON(PRODUCT_URL, function(data) {
+    let productData = data.map((d, index) => {
+        console.log(d)
+        for (let i=0; i < index+1; i++) {
+            let price = d.price;
+            console.log(price);
+            let qty = d.product_qty;
+            console.log(qty);
+            let total = price * qty;
+            return total
+        }
+    })
+    function totalSum(total, current) {
+        return total + current
+    } 
+    $('.total-value').text(productData.reduce(totalSum));
+})
+
 
 //-----
 //Display username
