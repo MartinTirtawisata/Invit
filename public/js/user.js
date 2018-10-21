@@ -12,6 +12,7 @@ function getAndDisplayProductList(){
             <td class="js-product-name product-name">${d.product_name}</td>
             <td class="product-desc">${d.product_desc}</td>
             <td><span class="dollar-sign">$</span><span class="product-price">${d.price}</span></td>
+            <td class="product-qty">${d.product_qty}</td>
             <td>
                 <button class="js-edit-btn edit-btn"><span class="edit-text">Edit</span></button>
                 <button class="js-dlt-btn delete-btn"><span>Delete</span></button>    
@@ -19,8 +20,10 @@ function getAndDisplayProductList(){
             </tr>`;
         });
         $('.js-product-table-body').html(productData)
-    })    
-}
+    });    
+};
+
+
 //-----
 //Display username
 function getAndDisplayUser(){
@@ -68,11 +71,13 @@ function handleAddProduct(user_id){
             user: user_id,
             product_name: $('.js-add-product-form').find('#productName').val(),
             product_desc: $('.js-add-product-form').find('#productDesc').val(),
-            price: $('.js-add-product-form').find('#productPrice').val()
+            price: $('.js-add-product-form').find('#productPrice').val(),
+            product_qty: $('.js-add-product-form').find('#productQty').val()
         });  
         $(e.currentTarget).find('#productName').val('')
         $(e.currentTarget).find('#productDesc').val('')
         $(e.currentTarget).find('#productPrice').val('')
+        $(e.currentTarget).find('#productQty').val('')
         $('#add-product-modal').css('display','none');
         $('#add-product-modal').prop('hidden','true');
     })
@@ -108,10 +113,12 @@ function getProductId(){
         let productName = $(e.currentTarget).closest('tr').find('td.product-name').text();
         let productDesc = $(e.currentTarget).closest('tr').find('td.product-desc').text();
         let productPrice = $(e.currentTarget).closest('tr').find('span.product-price').text();
+        let productQty = $(e.currentTarget).closest('tr').find('td.product-qty').text();
         $('.product-id').text(`${productID}`);
         $('#update-product-name').val(productName);
         $('#update-product-desc').val(productDesc); 
         $('#update-product-price').val(productPrice);
+        $('#update-product-qty').val(productQty);
     });
 };
 
@@ -122,7 +129,8 @@ function handleProductUpdate(){
             _id: $(e.currentTarget).find('.product-id').text(),
             product_name: $(e.currentTarget).find('#update-product-name').val(),
             product_desc: $(e.currentTarget).find('#update-product-desc').val(),
-            price: $(e.currentTarget).find('#update-product-price').val()
+            price: $(e.currentTarget).find('#update-product-price').val(),
+            product_qty: $(e.currentTarget).find('#update-product-qty').val()
         });
     });
 };

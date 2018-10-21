@@ -1,8 +1,8 @@
 * {
     box-sizing: border-box;
 }
+
 body {
-    background-color: rgb(230, 230, 230, 1.0);
     font-family: 'Muli', sans-serif;
 }
 
@@ -12,17 +12,20 @@ body {
     position: fixed;
     width: 100%;
     padding: 1px;
-    background-color:rgba(34, 47, 62,0.7);
     height: 50px;
     max-height: 50px;
     top: 0;
     right: 0;
 }
 
+.or {
+    color: rgba(34, 47, 62, 0.5);
+}
 .top-nav {
     list-style: none;
     float: right;
     padding: 0px 10px;
+    font-weight: bold;
 }
 
 .top-nav li{
@@ -35,4 +38,13 @@ body {
     display: block;
     text-decoration: none;
 }
+
+.top-nav a:hover{
+    color: lightgrey;
+    display: block;
+    text-decoration: none;
+
+}
 /* End Nav Bar */
+
+

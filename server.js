@@ -56,19 +56,29 @@ app.engine('handlebars', exphbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars')
 
 app.get('/index', function(req, res){
-   res.render('index');
+   res.render('index', {
+       title: "Invit",
+       style: "index.css"
+   });
 })
 
 app.get('/', function(req, res){
-    res.render('index');
+    res.render('index', {
+        title: "Invit",
+        style: "index.css"
+    });
  })
 
 app.get('/login', function(req, res){
-    res.render('login');
+    res.render('login', {
+        style: "login.css"
+    });
  })
 
 app.get('/user', function(req, res){
-    res.render('user');
+    res.render('user', {
+        style: "user.css"
+    });
 })
 
 // API URL

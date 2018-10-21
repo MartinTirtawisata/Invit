@@ -50,7 +50,7 @@ router.get('/products/:id',jsonParser, (req, res) => {
 
 // POST products
 router.post('/products', jsonParser, (req, res) => {
-    const requiredFields = ['user', 'product_name','product_desc','price']
+    const requiredFields = ['user', 'product_name','product_desc','price', 'product_qty']
     requiredFields.forEach(field => {
         if (!(field in req.body)){
             let message = `the ${field} field is missing`
@@ -65,24 +65,25 @@ router.post('/products', jsonParser, (req, res) => {
                 user: req.body.user,
                 product_name: req.body.product_name,
                 product_desc: req.body.product_desc,
-                price: req.body.price
+                price: req.body.price,
+                product_qty: req.body.product_qty
             }).then(function(product) {
                 res.status(200).json(product);
-            })
+            });
         } else {
             let message = `the user with the id ${req.body.user} doesn't exist`
             res.status(500).json({error: message});
-        }
+        };
     }).catch(onRejected => {
         console.log(onRejected);
         res.status(500).json({error: "something went wrong"});
-    })
-})
+    });
+});
 
 // PUT products
 router.put('/products/:id', jsonParser, (req, res) => {
     const productUpdate = {}
-    const updateableField = ['product_name','product_img','product_desc','price']
+    const updateableField = ['product_name','product_img','product_desc','price', 'product_qty']
     updateableField.forEach(item => {
         if (item in req.body){
             productUpdate[item] = req.body[item]

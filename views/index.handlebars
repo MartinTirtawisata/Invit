@@ -1,38 +1,59 @@
-<head>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/float-grid.css">
-</head>
 <main class="col-12" role="main">
     <div class="row">
-        <div class="user-form">
-            <div class="title">
-                <h1>NodE-Commerce</h1>
+         <div class="title">
+            <h1>{{title}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="desc-content">
+                <h2>Designed for small businesses</h2>
+                <p class="desc">Invit is an inventory management system designed for small businesses. You can easily create and track all your inventories here. </p>
             </div>
+        </div>
+        <div class="col-6">
+            <div class="user-form">
             <form class="sign-up-form">
-            <fieldset>
-                <legend>Sign Up</legend>
+                <fieldset>
+                    <legend>Join Invit Now</legend>
 
-                <label for="firstname">First name</label>
-                <input type="text" id="firstName">
+                    <label for="firstname">First name</label>
+                    <input type="text" id="firstName" placeholder="e.g. Ada">
 
-                <label for="lastname">Last name</label>
-                <input type="text" id="lastName">
+                    <label for="lastname">Last name</label>
+                    <input type="text" id="lastName" placeholder="e.g. Lovelace">
 
-                <label for="username">Username</label>
-                <input type="text" id="userName">
+                    <label for="username">Username</label>
+                    <input type="text" id="userName" placeholder="e.g. Username">
 
-                <label for="password">Password (1 or more characters)</label>
-                <input type="password" id="password">
+                    <label for="password">Password (1 or more characters)</label>
+                    <input type="password" id="password" placeholder="e.g. Password">
 
-                <p class="agreement">By clicking Join now, you agreen to NodE-commerce's <span class="rules">User Agreement</span>, <span class="rules">Privacy Policy</span>, and <span class="rules">Cookie Policy</span></p>
+                    <p class="agreement">By clicking Join now, you agreen to NodE-commerce's <span class="rules">User Agreement</span>, <span class="rules">Privacy Policy</span>, and <span class="rules">Cookie Policy</span></p>
 
-                <button class="button">Join now</button>
-            </fieldset>
-        </form>
-        </div>     
+                    <button class="button">Join now</button>
+                    
+                </fieldset>
+            </form>
+            </div>     
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <img src="/img/invit-ims.png" alt="invetory management system graphics">
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <h3>Track Everything</h3>
+                <p class="sub-desc">Invit allows you to store and track countless of products that you're manaing. No more hassle and mishandled products.</p>
+            </div>
+            <div class="row">
+                <h3>Create Any Product</h3>
+                <p class="sub-desc">You can create any product you want and Invit will handle it for you. It's crazy neat.</p>
+            </div>
+        </div>
     </div>
 </main>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/index-user-gateway.js"></script>
 

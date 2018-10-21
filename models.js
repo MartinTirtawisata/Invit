@@ -41,6 +41,7 @@ let productSchema = mongoose.Schema({
     product_name: 'string',
     product_desc: 'string',
     price: 'number',
+    product_qty: 'number',
     createdAt: {type: Date, default: Date.now}
 })
 
@@ -64,6 +65,7 @@ productSchema.methods.serialize = function(){
         user: this.username,
         product_name: this.product_name,
         product_desc: this.product_desc,
+        product_qty: this.product_qty
     };
 };
 
