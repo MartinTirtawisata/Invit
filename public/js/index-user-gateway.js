@@ -24,6 +24,9 @@ function registerUserAjax(user){
         success: function(data){
             window.location.assign('/user')
         },
+        error: function(){
+            alert("Username is taken")
+        },
         dataType: 'json',
         contentType: 'application/json'
     })
@@ -50,6 +53,9 @@ function authenticateUserAjax(user){
         data: JSON.stringify(user),
         success: function(data) {
             window.location.assign('/user')
+        },
+        error: function(){
+            alert("Username or password is invalid")
         },
         dataType: 'json',
         contentType: 'application/json'
