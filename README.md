@@ -1,6 +1,5 @@
-# NodE-Commerce
-NodE-Commerce is an e-commerce app that allows the user to sell items online. The user will be able to add, edit, and delete the items in their listing. The user will be able to register themselves to be authenticated as a seller
-
+# Invit
+Invit is a minimalist Inventory Management Systems designed for personal and small business's needs. It allows you to easily create and track all your products with simplicity and no hassle. 
 ## Demo
 https://pure-earth-57522.herokuapp.com/
 
@@ -16,6 +15,7 @@ There are a few functionality from the app that I had to cut from the project sc
 ![](png/user.png)
 ![](png/register.png)
 ![](png/login.png)
+![](png/landing.png)
  
 ## Technology
 HTML/CSS/JavaScript/jQuery/NodeJS/Express/MongoDB/mLAB/Mongoose/PassportJS/JWT/TravisCI/Heroku/Mocha & Chai
