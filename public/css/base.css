@@ -16,6 +16,7 @@ body {
     max-height: 50px;
     top: 0;
     right: 0;
+    background-color: rgba(34, 47, 62, 0.2);
 }
 
 .or {
