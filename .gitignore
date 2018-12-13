@@ -5,4 +5,4 @@ node_modules/
 # dotenv environment variable files
 .env 
 
-.DS_Stores
+.DS_Store
