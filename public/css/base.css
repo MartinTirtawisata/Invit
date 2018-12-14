@@ -16,35 +16,46 @@ body {
     max-height: 50px;
     top: 0;
     right: 0;
-    background-color: rgba(34, 47, 62, 0.2);
+    background-color: rgba(51,51,51,0.6);
 }
 
 .or {
-    color: rgba(34, 47, 62, 0.5);
+    color: white;
 }
-.top-nav {
+
+.top-nav-left {
+    list-style: none;
+    float:left;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.top-nav-right {
     list-style: none;
     float: right;
     padding: 0px 10px;
     font-weight: bold;
 }
 
-.top-nav li{
+.top-nav-right li, .top-nav-left li {
     display: inline-block;
     padding: 0px 10px;
 }
 
-.top-nav a{
+.top-nav-right a, .top-nav-left a{
     color: white;
     display: block;
     text-decoration: none;
 }
 
-.top-nav a:hover{
+.top-nav-right a:hover, .top-nav-left a:hover{
     color: lightgrey;
     display: block;
     text-decoration: none;
+}
 
+.logo {
+    float: left;
 }
 /* End Nav Bar */
 

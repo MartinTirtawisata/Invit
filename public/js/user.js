@@ -53,8 +53,6 @@ function getTotalValue(){
     })  
 }
 
-
-
 //-----
 //Display username
 function getAndDisplayUser(){
@@ -211,8 +209,6 @@ $('#search').on('keyup', function(){
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
-
-
 
 
 
