@@ -1,7 +1,7 @@
 # Invit
 Invit is a minimalist Inventory Management Systems designed for personal and small business's needs. It allows you to easily create and track all your products with simplicity and no hassle. 
 ## Demo
-https://pure-earth-57522.herokuapp.com/
+http://www.invit.live/
 
 ## Limitations
 There are a few functionality from the app that I had to cut from the project scope due to the lack of time available. It will be implemented further overtime.
